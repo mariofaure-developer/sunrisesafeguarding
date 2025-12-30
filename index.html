@@ -453,9 +453,13 @@
 
       <section id="contact">
         <div class="container">
-          <h2>Contact</h2>
-          <p>To discuss your safeguarding needs or book a consultation:</p>
-          <p><strong>hello@sunrisesafeguarding.co.za</strong></p>
+          <h2 id="contact-title">Contact</h2>
+          <p id="contact-desc">
+            To discuss your safeguarding needs or book a consultation:
+          </p>
+          <p>
+            <strong id="contact-email">hello@sunrisesafeguarding.co.za</strong>
+          </p>
         </div>
       </section>
     </main>
@@ -486,7 +490,10 @@
         valuesTitle,
         valuesText,
         whoTitle,
-        whoText
+        whoText,
+        contactTitle,
+        contactDesc,
+        contactEmail
       }
     `
         )
@@ -590,6 +597,26 @@
             whoSection.querySelector('h2').textContent = d.whoTitle;
 
           if (d.whoText) whoSection.querySelector('p').textContent = d.whoText;
+
+          /* =====================
+   CONTACT
+===================== */
+          const contactSection = document.getElementById('contact');
+
+          if (d.contactTitle) {
+            contactSection.querySelector('#contact-title').textContent =
+              d.contactTitle;
+          }
+
+          if (d.contactDesc) {
+            contactSection.querySelector('#contact-desc').textContent =
+              d.contactDesc;
+          }
+
+          if (d.contactEmail) {
+            contactSection.querySelector('#contact-email').textContent =
+              d.contactEmail;
+          }
         })
         .catch(console.error);
 

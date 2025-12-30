@@ -86,6 +86,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'contactDesc',
+      title: 'Contact Description',
+      type: 'string',
+    },
+    {
       name: 'contactEmail',
       title: 'Contact Email',
       type: 'string',
