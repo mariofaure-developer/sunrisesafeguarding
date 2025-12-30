@@ -316,22 +316,11 @@
       <section class="hero">
         <div class="container">
           <div class="hero-card">
-            <div class="pill-row">
-              <span class="pill">Schools</span>
-              <span class="pill">NGOs</span>
-              <span class="pill">Events</span>
-              <span class="pill">Governance</span>
-            </div>
-            <h1>Safeguarding with clarity, confidence and care</h1>
-            <p class="lead">
-              Sunrise Safeguarding supports organisations to build
-              trauma-informed, legally sound safeguarding systems that protect
-              people in practice — not just on paper.
-            </p>
+            <div class="pill-row"></div>
+            <h1 id="hero-heading"></h1>
+            <p class="lead"></p>
             <div style="margin-top: 32px">
-              <a href="#contact" class="btn btn-primary"
-                >Request a consultation</a
-              >
+              <a href="#contact" class="btn btn-primary"></a>
             </div>
           </div>
         </div>
@@ -339,7 +328,7 @@
 
       <section id="services">
         <div class="container">
-          <h2>Services</h2>
+          <h2></h2>
           <div class="grid three">
             <div class="card">
               <div class="icon">
@@ -472,15 +461,139 @@
     </main>
 
     <footer>© <span id="year"></span> Sunrise Safeguarding</footer>
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-    <script>
-      const hash = window.location.hash;
+    <script type="module">
+      import { createClient } from 'https://esm.sh/@sanity/client@6';
 
-      if (hash.includes('recovery_token') || hash.includes('invite_token')) {
-        window.location.href = '/admin/' + hash;
+      const client = createClient({
+        projectId: '2vw3tpvg',
+        dataset: 'production',
+        apiVersion: '2024-01-01',
+        useCdn: false, // instant updates while working
+      });
+
+      client
+        .fetch(
+          `
+      *[_type=="home"][0]{
+        heading,
+        heroText,
+        heroCta,
+        heroPills[]{label},
+        servicesTitle,
+        services[]{title, description},
+        approachTitle,
+        approachItems[]{title, text},
+        valuesTitle,
+        valuesText,
+        whoTitle,
+        whoText
       }
+    `
+        )
+        .then((d) => {
+          if (!d) return;
+
+          /* =====================
+         HERO
+      ====================== */
+          if (d.heading)
+            document.getElementById('hero-heading').textContent = d.heading;
+
+          if (d.heroText)
+            document.querySelector('.hero .lead').textContent = d.heroText;
+
+          if (d.heroCta)
+            document.querySelector('.hero .btn-primary').textContent =
+              d.heroCta;
+
+          if (Array.isArray(d.heroPills)) {
+            const pillRow = document.querySelector('.pill-row');
+            pillRow.innerHTML = '';
+            d.heroPills.forEach((p) => {
+              pillRow.insertAdjacentHTML(
+                'beforeend',
+                `<span class="pill">${p.label}</span>`
+              );
+            });
+          }
+
+          /* =====================
+         SERVICES
+      ====================== */
+          /* =====================
+   SERVICES (KEEP ICONS)
+===================== */
+          const servicesSection = document.getElementById('services');
+
+          if (d.servicesTitle) {
+            servicesSection.querySelector('h2').textContent = d.servicesTitle;
+          }
+
+          if (Array.isArray(d.services)) {
+            const cards = servicesSection.querySelectorAll('.card');
+
+            d.services.forEach((service, index) => {
+              const card = cards[index];
+              if (!card) return;
+
+              const titleEl = card.querySelector('h3');
+              const descEl = card.querySelector('p');
+
+              if (titleEl && service.title) {
+                titleEl.textContent = service.title;
+              }
+
+              if (descEl && service.description) {
+                descEl.textContent = service.description;
+              }
+            });
+          }
+
+          /* =====================
+         APPROACH
+      ====================== */
+          const approachSection = document.getElementById('approach');
+          if (d.approachTitle)
+            approachSection.querySelector('h2').textContent = d.approachTitle;
+
+          if (Array.isArray(d.approachItems)) {
+            const grid = approachSection.querySelector('.grid');
+            grid.innerHTML = '';
+            d.approachItems.forEach((a) => {
+              grid.insertAdjacentHTML(
+                'beforeend',
+                `
+            <div class="card">
+              <h3>${a.title}</h3>
+              <p>${a.text}</p>
+            </div>
+          `
+              );
+            });
+          }
+
+          /* =====================
+         VALUES
+      ====================== */
+          const valuesSection = document.getElementById('values');
+          if (d.valuesTitle)
+            valuesSection.querySelector('h2').textContent = d.valuesTitle;
+
+          if (d.valuesText)
+            valuesSection.querySelector('p').textContent = d.valuesText;
+
+          /* =====================
+         WHO WE WORK WITH
+      ====================== */
+          const whoSection = document.getElementById('who');
+          if (d.whoTitle)
+            whoSection.querySelector('h2').textContent = d.whoTitle;
+
+          if (d.whoText) whoSection.querySelector('p').textContent = d.whoText;
+        })
+        .catch(console.error);
+
+      document.getElementById('year').textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
