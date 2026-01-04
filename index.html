@@ -148,9 +148,10 @@
         margin-top: 0;
       }
       h1 {
-        font-size: clamp(2.2rem, 5vw, 3.2rem);
+        font-size: clamp(1.75rem, 5vw, 3.2rem);
         margin-bottom: 12px;
         letter-spacing: 0.12em;
+        line-height: 1.2;
       }
       h2 {
         font-size: 1.5rem;
@@ -271,6 +272,10 @@
         }
       }
       @media (max-width: 600px) {
+        h1 {
+          font-size: 1.5rem;
+          letter-spacing: 0.08em;
+        }
         .three {
           grid-template-columns: 1fr;
         }
@@ -278,7 +283,7 @@
           padding: 48px 0;
         }
         .hero-card {
-          padding: 34px;
+          padding: 24px;
         }
         .hero {
           padding: 20px 0 48px;
@@ -379,23 +384,25 @@
               <div class="icon">
                 <svg viewBox="0 0 24 24"><path d="M5 21V7l7-4 7 4v14" /></svg>
               </div>
-              <h3>Governance support</h3>
+              <h3>Interim DSL support</h3>
               <p>
-                Oversight structures, supervision and safeguarding leadership
-                support.
+                Expert cover for DSL vacancies or extended leave to maintain
+                continuity.
               </p>
             </div>
             <div class="card">
               <div class="icon">
                 <svg viewBox="0 0 24 24">
-                  <circle cx="7" cy="12" r="3" />
-                  <circle cx="17" cy="12" r="3" />
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg>
               </div>
-              <h3>Retainer partnerships</h3>
+              <h3>Supervision</h3>
               <p>
-                Ongoing safeguarding advice, accountability and critical-friend
-                support.
+                Professional safeguarding supervision for DSLs and safeguarding
+                teams.
               </p>
             </div>
           </div>
@@ -407,21 +414,21 @@
           <h2>Our approach</h2>
           <div class="grid three">
             <div class="card">
-              <h3>Listen first</h3>
+              <h3>Clarity</h3>
               <p>
-                We understand context, culture and risk before recommending
-                change.
+                We cut through complexity to provide clear, actionable advice.
               </p>
             </div>
             <div class="card">
-              <h3>Build systems</h3>
-              <p>Clear roles, reporting pathways and accountable structures.</p>
+              <h3>Confidence</h3>
+              <p>
+                We empower leaders to make difficult decisions with certainty.
+              </p>
             </div>
             <div class="card">
-              <h3>Embed practice</h3>
+              <h3>Care</h3>
               <p>
-                Training, supervision and follow-up that leads to lasting
-                change.
+                We keep the child at the centre of every decision and process.
               </p>
             </div>
           </div>
@@ -433,8 +440,8 @@
           <div class="accent">
             <h2>Our values</h2>
             <p>
-              Child-centred practice, trauma-informed care, ethical leadership,
-              accountability and continuous learning underpin everything we do.
+              Integrity, transparency and a commitment to excellence in
+              safeguarding.
             </p>
           </div>
         </div>
@@ -444,9 +451,8 @@
         <div class="container">
           <h2>Who we work with</h2>
           <p>
-            Schools, NGOs, community organisations, faith-based institutions,
-            event organisers and governing bodies seeking safeguarding that is
-            ethical, lawful and genuinely protective.
+            Schools, charities, sports clubs and organisations working with
+            children and vulnerable adults.
           </p>
         </div>
       </section>
@@ -472,7 +478,7 @@
         projectId: '2vw3tpvg',
         dataset: 'production',
         apiVersion: '2024-01-01',
-        useCdn: false, // instant updates while working
+        useCdn: true, // instant updates while working
       });
 
       client
