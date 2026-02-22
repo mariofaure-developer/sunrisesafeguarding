@@ -461,6 +461,11 @@
           display: flex;
         }
       }
+
+      /* ✅ NEW: hide hero CTA wrapper until content is ready */
+      #hero-cta-wrapper {
+        display: none;
+      }
     </style>
   </head>
 
@@ -519,8 +524,10 @@
             <div class="pill-row"></div>
             <h1 id="hero-heading"></h1>
             <p class="lead"></p>
-            <div style="margin-top: 32px">
-              <a href="#contact" class="btn btn-primary"></a>
+
+            <!-- ✅ UPDATED: hidden until content is ready -->
+            <div id="hero-cta-wrapper" style="margin-top: 32px; display: none">
+              <a href="#contact" class="btn btn-primary hero-cta-btn"></a>
             </div>
           </div>
         </div>
@@ -680,9 +687,12 @@
           if (d.heroText)
             document.querySelector('.hero .lead').textContent = d.heroText;
 
-          if (d.heroCta)
-            document.querySelector('.hero .btn-primary').textContent =
-              d.heroCta;
+          // ✅ UPDATED: only show hero CTA if we have text
+          if (d.heroCta) {
+            const heroBtn = document.querySelector('.hero .hero-cta-btn');
+            heroBtn.textContent = d.heroCta;
+            document.getElementById('hero-cta-wrapper').style.display = 'block';
+          }
 
           if (Array.isArray(d.heroPills)) {
             const pillRow = document.querySelector('.pill-row');
