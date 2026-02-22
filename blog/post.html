@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sunrise Safeguarding</title>
+    <title>Safeguarding Is Not a Policy — Sunrise Safeguarding</title>
     <meta
       name="description"
-      content="Sunrise Safeguarding — safeguarding with clarity, confidence and care."
+      content="Why many organisations feel 'covered' but still miss real risk. Safeguarding is not a policy — it is a mindset, a practice, and a way of thinking."
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,17 +17,30 @@
     />
 
     <style>
+      .post-content ul,
+      .post-content ol {
+        margin: 2em 0 2em 1.8em;
+        padding-left: 1.2em;
+      }
+
+      .post-content li {
+        margin-bottom: 1em;
+        line-height: 1.8;
+      }
+
+      /* Optional: brand-coloured bullets */
+      .post-content ul li::marker,
+      .post-content ol li::marker {
+        color: var(--brand-strong);
+      }
       :root {
         --brand: #f08a3c;
         --brand-strong: #d8742e;
         --brand-soft: #fde6d4;
-
         --ink: #2f2a25;
         --ink-soft: #5e564e;
-
         --paper: #fbfbf7;
         --white: #ffffff;
-
         --radius: 16px;
         --shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
         --max: 1120px;
@@ -36,6 +49,7 @@
       * {
         box-sizing: border-box;
       }
+
       body {
         margin: 0;
         font-family: Inter, system-ui, sans-serif;
@@ -55,15 +69,18 @@
         background-attachment: fixed;
         line-height: 1.65;
       }
+
       a {
         color: inherit;
         text-decoration: none;
       }
+
       .container {
         width: min(var(--max), calc(100% - 32px));
         margin: 0 auto;
       }
 
+      /* ── Header ── */
       header {
         position: sticky;
         top: 0;
@@ -94,7 +111,11 @@
         align-items: center;
         font-weight: 600;
       }
+      .nav-links a.active {
+        color: var(--brand-strong);
+      }
 
+      /* ── Buttons ── */
       .btn {
         padding: 12px 22px;
         border-radius: 999px;
@@ -120,12 +141,23 @@
         transform: translateY(-1px);
         box-shadow: 0 12px 22px rgba(47, 42, 37, 0.2);
       }
+      .btn-ghost {
+        background: transparent;
+        color: var(--brand-strong);
+        border: 2px solid var(--brand-strong);
+        padding: 10px 20px;
+      }
+      .btn-ghost:hover {
+        background: var(--brand-soft);
+        transform: translateY(-1px);
+      }
 
-      .hero {
-        padding: 84px 0 0px;
+      /* ── Article hero ── */
+      .post-hero {
+        padding: 64px 0 0;
         background: transparent;
       }
-      .hero-card {
+      .post-hero-card {
         background: var(--white);
         border-radius: var(--radius);
         box-shadow: var(--shadow);
@@ -134,58 +166,23 @@
         position: relative;
         overflow: hidden;
       }
-      .hero-card:before {
+      .post-hero-card::before {
         content: '';
         position: absolute;
         inset: -2px;
         background: linear-gradient(
           135deg,
-          rgba(240, 138, 60, 0.2),
+          rgba(240, 138, 60, 0.18),
           transparent 55%
         );
         pointer-events: none;
       }
-      .hero-card > * {
+      .post-hero-card > * {
         position: relative;
       }
 
-      h1,
-      h2,
-      h3 {
-        font-family: 'Albert Sans', sans-serif;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        margin-top: 0;
-      }
-      h1 {
-        font-size: clamp(1.75rem, 5vw, 3.2rem);
-        margin-bottom: 12px;
-        letter-spacing: 0.12em;
-        line-height: 1.2;
-      }
-      h2 {
-        font-size: 1.5rem;
-        margin-bottom: 22px;
-      }
-      h3 {
-        font-size: 1rem;
-        margin-bottom: 10px;
-      }
-
-      .lead {
-        font-size: 1.1rem;
-        max-width: 68ch;
-        margin-top: 18px;
-        color: var(--ink-soft);
-      }
-
-      .pill-row {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        margin-bottom: 22px;
-      }
-      .pill {
+      .post-category {
+        display: inline-block;
         padding: 7px 14px;
         border-radius: 999px;
         font-size: 0.72rem;
@@ -196,50 +193,71 @@
         text-transform: uppercase;
         font-family: 'Albert Sans', sans-serif;
         border: 1px solid rgba(0, 0, 0, 0.05);
+        margin-bottom: 22px;
       }
 
-      section {
-        padding: 0px 0;
+      h1,
+      h2,
+      h3 {
+        font-family: 'Albert Sans', sans-serif;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-top: 0;
       }
-      section + section {
-        padding-top: 48px;
+      h1 {
+        font-size: clamp(1.6rem, 4vw, 2.8rem);
+        margin-bottom: 16px;
+        line-height: 1.2;
+      }
+      h2 {
+        font-size: 1.25rem;
+        margin-bottom: 14px;
+        margin-top: 48px;
+        letter-spacing: 0.14em;
       }
 
-      .grid {
-        display: grid;
-        gap: 26px;
-      }
-      .three {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .card {
-        background: var(--white);
-        border-radius: var(--radius);
-        padding: 32px;
-        box-shadow: var(--shadow);
-        border: 1px solid rgba(0, 0, 0, 0.06);
-      }
-      .card p {
-        margin: 0;
+      .post-subtitle {
+        font-size: 1.15rem;
         color: var(--ink-soft);
-      }
-      .icon {
-        width: 42px;
-        height: 42px;
-        margin-bottom: 18px;
-      }
-      .icon svg {
-        width: 100%;
-        height: 100%;
-        stroke: var(--brand-strong);
-        stroke-width: 1.7;
-        fill: none;
-        stroke-linecap: round;
-        stroke-linejoin: round;
+        font-style: italic;
+        margin-bottom: 0;
+        max-width: 72ch;
       }
 
-      .accent {
+      /* ── Article body ── */
+      .post-body {
+        padding: 56px 0 80px;
+      }
+      .post-content {
+        max-width: 72ch;
+        margin: 0 auto;
+      }
+      .post-content p {
+        margin: 0 0 1.5em;
+        font-size: 1.05rem;
+        color: var(--ink);
+        line-height: 1.75;
+      }
+      .post-content h2 {
+        color: var(--ink);
+        margin-top: 2.4em;
+      }
+      .post-content blockquote {
+        margin: 2em 0;
+        padding: 20px 28px;
+        background: var(--brand-soft);
+        border-left: 4px solid var(--brand-strong);
+        border-radius: 0 var(--radius) var(--radius) 0;
+        font-size: 1.08rem;
+        color: var(--ink);
+        font-style: italic;
+      }
+      .post-content blockquote p {
+        margin: 0;
+      }
+
+      /* ── CTA strip ── */
+      .post-cta {
         background: linear-gradient(
           180deg,
           rgba(253, 230, 212, 0.9),
@@ -248,8 +266,47 @@
         border-radius: var(--radius);
         padding: 44px;
         border: 1px solid rgba(0, 0, 0, 0.06);
+        text-align: center;
+        max-width: 72ch;
+        margin: 48px auto 0;
+      }
+      .post-cta h2 {
+        margin-top: 0;
+        margin-bottom: 12px;
+        font-size: 1.15rem;
+      }
+      .post-cta p {
+        color: var(--ink-soft);
+        margin-bottom: 24px;
+        font-size: 1rem;
       }
 
+      /* ── Back link ── */
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--brand-strong);
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 40px;
+        transition: gap 0.15s ease;
+      }
+      .back-link:hover {
+        gap: 12px;
+      }
+      .back-link svg {
+        width: 16px;
+        height: 16px;
+        stroke: currentColor;
+        stroke-width: 2;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+      }
+
+      /* ── Footer ── */
       footer {
         padding: 52px 0 68px;
         text-align: center;
@@ -257,6 +314,7 @@
         color: #6b625a;
       }
 
+      /* ── Responsive ── */
       @media (max-width: 1200px) {
         .nav-links {
           display: none;
@@ -274,46 +332,30 @@
           grid-column: 3;
           justify-self: end;
         }
-        .three {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        section {
-          padding: 48px 0;
-        }
-
-        .hero-card {
+        .post-hero-card {
           padding: 34px;
         }
-        .hero {
-          padding: 20px 0 48px;
+        .post-hero {
+          padding: 20px 0 0;
         }
-        section + section {
-          padding-top: 0px;
+        .post-content {
+          max-width: 100%;
+        }
+        .post-cta {
+          max-width: 100%;
         }
       }
       @media (max-width: 600px) {
         h1 {
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           letter-spacing: 0.08em;
         }
-        .three {
-          grid-template-columns: 1fr;
-        }
-        section {
-          padding: 48px 0;
-        }
-        .hero-card {
+        .post-hero-card {
           padding: 24px;
         }
-        .hero {
-          padding: 20px 0 48px;
+        .post-body {
+          padding: 36px 0 60px;
         }
-        section + section {
-          padding-top: 0px;
-        }
-      }
-      section[id] {
-        scroll-margin-top: 160px;
       }
 
       /* ── Hamburger button ── */
@@ -467,22 +509,22 @@
   <body>
     <header>
       <div class="container nav-inner">
-        <a href="#"
+        <a href="/"
           ><img
             src="/assets/logo.jpg"
             alt="Sunrise Safeguarding"
             class="brand-logo"
         /></a>
         <nav class="nav-links">
-          <a href="#services">Services</a>
-          <a href="#approach">Approach</a>
-          <a href="#values">Values</a>
-          <a href="#who">Who we work with</a>
+          <a href="/#services">Services</a>
+          <a href="/#approach">Approach</a>
+          <a href="/#values">Values</a>
+          <a href="/#who">Who we work with</a>
           <a href="/about.html">About</a>
-          <a href="/blog/">Blog</a>
+          <a href="/blog/" class="active">Blog</a>
           <a href="/resources/">Resources</a>
           <a href="/faqs.html">FAQs</a>
-          <a href="#contact" class="btn btn-primary">Book a call</a>
+          <a href="/#contact" class="btn btn-primary">Book a call</a>
         </nav>
         <button
           class="hamburger"
@@ -504,274 +546,49 @@
     >
       <div class="mobile-drawer">
         <a href="/about.html">About</a>
-        <a href="/blog/">Blog</a>
+        <a href="/blog/" class="active">Blog</a>
         <a href="/resources/">Resources</a>
         <a href="/faqs.html">FAQs</a>
         <div class="mobile-divider"></div>
-        <a href="#contact" class="btn btn-primary">Book a call</a>
+        <a href="/#contact" class="btn btn-primary">Book a call</a>
       </div>
     </div>
 
     <main>
-      <section class="hero">
+      <section class="post-hero">
         <div class="container">
-          <div class="hero-card">
-            <div class="pill-row"></div>
-            <h1 id="hero-heading"></h1>
-            <p class="lead"></p>
-            <div style="margin-top: 32px">
-              <a href="#contact" class="btn btn-primary"></a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="services">
-        <div class="container">
-          <h2></h2>
-          <div class="grid three">
-            <div class="card">
-              <div class="icon">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6z" />
-                </svg>
-              </div>
-              <h3>Safeguarding audits</h3>
-              <p>
-                Whole-organisation, boarding and event audits with clear,
-                prioritised actions.
-              </p>
-            </div>
-            <div class="card">
-              <div class="icon">
-                <svg viewBox="0 0 24 24">
-                  <path d="M7 3h7l5 5v13H7z" />
-                  <path d="M14 3v5h5" />
-                </svg>
-              </div>
-              <h3>Policies & protocols</h3>
-              <p>
-                Clear, usable safeguarding documentation aligned to law and best
-                practice.
-              </p>
-            </div>
-            <div class="card">
-              <div class="icon">
-                <svg viewBox="0 0 24 24"><path d="M12 3l10 5-10 5L2 8z" /></svg>
-              </div>
-              <h3>Training</h3>
-              <p>
-                Trauma-informed training for staff, leaders, boards and
-                volunteers.
-              </p>
-            </div>
-            <div class="card">
-              <div class="icon">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /></svg>
-              </div>
-              <h3>Case consultation</h3>
-              <p>
-                Support with disclosures, thresholds and complex safeguarding
-                decisions.
-              </p>
-            </div>
-            <div class="card">
-              <div class="icon">
-                <svg viewBox="0 0 24 24"><path d="M5 21V7l7-4 7 4v14" /></svg>
-              </div>
-              <h3>Interim DSL support</h3>
-              <p>
-                Expert cover for DSL vacancies or extended leave to maintain
-                continuity.
-              </p>
-            </div>
-            <div class="card">
-              <div class="icon">
-                <svg viewBox="0 0 24 24">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-              </div>
-              <h3>Supervision</h3>
-              <p>
-                Professional safeguarding supervision for DSLs and safeguarding
-                teams.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="approach">
-        <div class="container">
-          <h2>Our approach</h2>
-          <div class="grid three">
-            <div class="card">
-              <h3>Clarity</h3>
-              <p>
-                We cut through complexity to provide clear, actionable advice.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Confidence</h3>
-              <p>
-                We empower leaders to make difficult decisions with certainty.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Care</h3>
-              <p>
-                We keep the child at the centre of every decision and process.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="values">
-        <div class="container">
-          <div class="accent">
-            <h2>Our values</h2>
-            <p>
-              Integrity, transparency and a commitment to excellence in
-              safeguarding.
+          <div class="post-hero-card">
+            <span class="post-category">Safeguarding Mindset</span>
+            <h1>
+              Safeguarding Is Not a Policy: Building a Safeguarding Mindset in
+              Africa and Beyond
+            </h1>
+            <p class="post-subtitle">
+              Why many organisations feel "covered" but still miss real risk
             </p>
           </div>
         </div>
       </section>
 
-      <section id="who">
+      <section class="post-body">
         <div class="container">
-          <h2>Who we work with</h2>
-          <p>
-            Schools, charities, sports clubs and organisations working with
-            children and vulnerable adults.
-          </p>
-        </div>
-      </section>
+          <a href="/blog/" class="back-link">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6" /></svg>
+            Back to Blog
+          </a>
 
-      <section id="contact">
-        <div class="container">
-          <h2 id="contact-title">Contact</h2>
-          <p id="contact-desc">
-            To discuss your safeguarding needs or book a consultation:
-          </p>
-          <p>
-            <strong id="contact-email">hello@sunrisesafeguarding.co.za</strong>
-          </p>
+          <div class="post-content"></div>
         </div>
       </section>
     </main>
 
     <footer>© <span id="year"></span> Sunrise Safeguarding</footer>
     <script>
-      async function loadHome() {
-        try {
-          const res = await fetch('/.netlify/functions/home');
-          const d = await res.json();
-          if (!d) return;
-
-          /* HERO */
-          if (d.heading)
-            document.getElementById('hero-heading').textContent = d.heading;
-
-          if (d.heroText)
-            document.querySelector('.hero .lead').textContent = d.heroText;
-
-          if (d.heroCta)
-            document.querySelector('.hero .btn-primary').textContent =
-              d.heroCta;
-
-          if (Array.isArray(d.heroPills)) {
-            const pillRow = document.querySelector('.pill-row');
-            pillRow.innerHTML = '';
-            d.heroPills.forEach((p) => {
-              pillRow.insertAdjacentHTML(
-                'beforeend',
-                `<span class="pill">${p.label}</span>`,
-              );
-            });
-          }
-
-          /* SERVICES */
-          const servicesSection = document.getElementById('services');
-
-          if (d.servicesTitle)
-            servicesSection.querySelector('h2').textContent = d.servicesTitle;
-
-          if (Array.isArray(d.services)) {
-            const cards = servicesSection.querySelectorAll('.card');
-
-            d.services.forEach((service, index) => {
-              const card = cards[index];
-              if (!card) return;
-
-              if (service.title)
-                card.querySelector('h3').textContent = service.title;
-
-              if (service.description)
-                card.querySelector('p').textContent = service.description;
-            });
-          }
-
-          /* APPROACH */
-          const approachSection = document.getElementById('approach');
-
-          if (d.approachTitle)
-            approachSection.querySelector('h2').textContent = d.approachTitle;
-
-          if (Array.isArray(d.approachItems)) {
-            const grid = approachSection.querySelector('.grid');
-            grid.innerHTML = '';
-
-            d.approachItems.forEach((a) => {
-              grid.insertAdjacentHTML(
-                'beforeend',
-                `<div class="card">
-             <h3>${a.title}</h3>
-             <p>${a.text}</p>
-           </div>`,
-              );
-            });
-          }
-
-          /* VALUES */
-          const valuesSection = document.getElementById('values');
-          if (d.valuesTitle)
-            valuesSection.querySelector('h2').textContent = d.valuesTitle;
-          if (d.valuesText)
-            valuesSection.querySelector('p').textContent = d.valuesText;
-
-          /* WHO */
-          const whoSection = document.getElementById('who');
-          if (d.whoTitle)
-            whoSection.querySelector('h2').textContent = d.whoTitle;
-          if (d.whoText) whoSection.querySelector('p').textContent = d.whoText;
-
-          /* CONTACT */
-          if (d.contactTitle)
-            document.getElementById('contact-title').textContent =
-              d.contactTitle;
-
-          if (d.contactDesc)
-            document.getElementById('contact-desc').textContent = d.contactDesc;
-
-          if (d.contactEmail)
-            document.getElementById('contact-email').textContent =
-              d.contactEmail;
-        } catch (err) {
-          console.error('Homepage load error:', err);
-        }
-      }
-
-      loadHome();
-
-      /* Footer year */
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      /* Mobile menu */
+      // -------------------------
+      // MOBILE MENU
+      // -------------------------
       const hamburger = document.getElementById('hamburger');
       const mobileMenu = document.getElementById('mobileMenu');
 
@@ -794,6 +611,154 @@
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') toggleMenu(false);
       });
+
+      // -------------------------
+      // SANITY CONFIG
+      // -------------------------
+      const projectId = '2vw3tpvg';
+      const dataset = 'production';
+      const apiVersion = '2024-01-01';
+
+      const baseUrl = `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}`;
+
+      // -------------------------
+      // GET SLUG FROM URL
+      // -------------------------
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('slug');
+
+      if (!slug) {
+        document.querySelector('.post-content').innerHTML =
+          '<p>Post not found.</p>';
+        throw new Error('No slug provided');
+      }
+
+      // -------------------------
+      // FETCH POST
+      // -------------------------
+      const query = encodeURIComponent(`
+    *[_type == "post" && slug.current == "${slug}"][0]{
+      title,
+      excerpt,
+      category,
+      body
+    }
+  `);
+
+      fetch(`${baseUrl}?query=${query}`)
+        .then((res) => res.json())
+        .then(({ result }) => {
+          if (!result) {
+            document.querySelector('.post-content').innerHTML =
+              '<p>Post not found.</p>';
+            return;
+          }
+
+          document.querySelector('.post-category').textContent =
+            result.category || 'Blog';
+
+          document.querySelector('h1').textContent = result.title;
+          document.querySelector('.post-subtitle').textContent =
+            result.excerpt || '';
+
+          document.title = `${result.title} — Sunrise Safeguarding`;
+
+          const container = document.querySelector('.post-content');
+          container.innerHTML = '';
+
+          let listBuffer = [];
+          let listType = null;
+
+          function flushList() {
+            if (!listBuffer.length) return;
+
+            const tag = listType === 'number' ? 'ol' : 'ul';
+
+            container.insertAdjacentHTML(
+              'beforeend',
+              `<${tag}>${listBuffer.join('')}</${tag}>`,
+            );
+
+            listBuffer = [];
+            listType = null;
+          }
+
+          result.body.forEach((block) => {
+            if (block.listItem) {
+              if (!listType) listType = block.listItem;
+
+              listBuffer.push(`<li>${renderChildren(block.children)}</li>`);
+
+              return;
+            }
+
+            // If we hit non-list content, flush any open list
+            flushList();
+
+            const content = renderChildren(block.children);
+
+            switch (block.style) {
+              case 'h2':
+                container.insertAdjacentHTML(
+                  'beforeend',
+                  `<h2>${content}</h2>`,
+                );
+                break;
+
+              case 'blockquote':
+                container.insertAdjacentHTML(
+                  'beforeend',
+                  `<blockquote><p>${content}</p></blockquote>`,
+                );
+                break;
+
+              default:
+                container.insertAdjacentHTML('beforeend', `<p>${content}</p>`);
+            }
+          });
+
+          // Flush remaining list at end
+          flushList();
+
+          container.insertAdjacentHTML(
+            'beforeend',
+            `
+      <div class="post-cta">
+        <h2>Ready to build a safeguarding culture?</h2>
+        <p>We work with NGOs, schools, faith-based organisations, and community projects across Africa to move safeguarding from policy to practice.</p>
+        <a href="/#contact" class="btn btn-primary">Book a consultation</a>
+      </div>
+      `,
+          );
+        })
+        .catch(() => {
+          document.querySelector('.post-content').innerHTML =
+            '<p>Error loading post.</p>';
+        });
+      // -------------------------
+      // RENDER CHILDREN (Bold / Italic / Links)
+      // -------------------------
+      function renderChildren(children) {
+        return children
+          .map((child) => {
+            let text = child.text.replace(/\n/g, '<br>');
+
+            if (!child.marks) return text;
+
+            child.marks.forEach((mark) => {
+              if (mark === 'strong') {
+                text = `<strong>${text}</strong>`;
+              }
+
+              if (mark === 'em') {
+                text = `<em>${text}</em>`;
+              }
+            });
+
+            return text;
+          })
+          .join('');
+      }
     </script>
   </body>
 </html>

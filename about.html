@@ -1,0 +1,894 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About — Sunrise Safeguarding</title>
+    <meta
+      name="description"
+      content="Meet Erin Faure — social worker, safeguarding specialist, and founder of Sunrise Safeguarding. Nearly 20 years of experience in child protection across South Africa and the UK."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --brand: #f08a3c;
+        --brand-strong: #d8742e;
+        --brand-soft: #fde6d4;
+        --ink: #2f2a25;
+        --ink-soft: #5e564e;
+        --paper: #fbfbf7;
+        --white: #ffffff;
+        --radius: 16px;
+        --shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+        --max: 1120px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(
+            ellipse 900px 600px at 8% 0%,
+            rgba(240, 138, 60, 0.22) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 600px 400px at 92% 5%,
+            rgba(240, 138, 60, 0.1) 0%,
+            transparent 65%
+          ),
+          var(--paper);
+        background-attachment: fixed;
+        line-height: 1.65;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(var(--max), calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      /* ── Header ── */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(251, 251, 247, 1);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .nav-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 0;
+        gap: 16px;
+      }
+      @media (min-width: 1201px) {
+        .hamburger {
+          display: none !important;
+        }
+      }
+      .brand-logo {
+        max-height: 150px;
+        display: block;
+      }
+      .nav-links {
+        display: flex;
+        gap: 22px;
+        align-items: center;
+        font-weight: 600;
+      }
+      .nav-links a.active {
+        color: var(--brand-strong);
+      }
+
+      /* ── Buttons ── */
+      .btn {
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-family: 'Albert Sans', sans-serif;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease,
+          background 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-primary {
+        background: var(--brand-strong);
+        color: #fff;
+        box-shadow: 0 8px 18px rgba(47, 42, 37, 0.18);
+      }
+      .btn-primary:hover {
+        background: #c96523;
+        transform: translateY(-1px);
+        box-shadow: 0 12px 22px rgba(47, 42, 37, 0.2);
+      }
+
+      /* ── Page hero ── */
+      .page-hero {
+        padding: 72px 0 0;
+        background: transparent;
+      }
+      .page-hero-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 64px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        position: relative;
+        overflow: hidden;
+      }
+      .page-hero-card::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        background: linear-gradient(
+          135deg,
+          rgba(240, 138, 60, 0.18),
+          transparent 55%
+        );
+        pointer-events: none;
+      }
+      .page-hero-card > * {
+        position: relative;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: 'Albert Sans', sans-serif;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin-top: 0;
+      }
+      h1 {
+        font-size: clamp(1.75rem, 5vw, 3.2rem);
+        margin-bottom: 12px;
+        letter-spacing: 0.12em;
+        line-height: 1.2;
+      }
+      h2 {
+        font-size: 1.25rem;
+        margin-bottom: 18px;
+        letter-spacing: 0.14em;
+      }
+
+      .lead {
+        font-size: 1.1rem;
+        max-width: 68ch;
+        margin-top: 18px;
+        color: var(--ink-soft);
+        margin-bottom: 0;
+      }
+
+      /* ── About section ── */
+      .about-section {
+        padding: 64px 0 80px;
+      }
+
+      /* ── Profile card ── */
+      .profile-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+        padding: 48px 52px;
+      }
+
+      .profile-inner {
+        display: flex;
+        gap: 36px;
+        align-items: flex-start;
+      }
+
+      .profile-photo-col {
+        flex-shrink: 0;
+      }
+      .profile-photo-col img {
+        width: 160px;
+        height: 160px;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+        border-radius: var(--radius);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      }
+
+      .profile-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .profile-role {
+        display: inline-block;
+        padding: 7px 14px;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        background: var(--brand-soft);
+        color: var(--brand-strong);
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-family: 'Albert Sans', sans-serif;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        margin-bottom: 20px;
+        align-self: flex-start;
+      }
+
+      .profile-name {
+        font-family: 'Albert Sans', sans-serif;
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin: 0 0 28px;
+        color: var(--ink);
+        line-height: 1.15;
+      }
+
+      .profile-bio p {
+        font-size: 1rem;
+        color: var(--ink-soft);
+        line-height: 1.78;
+        margin: 0 0 1.2em;
+      }
+      .profile-bio p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* ── LinkedIn link ── */
+      .linkedin-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 32px;
+        padding: 12px 20px;
+        border-radius: 999px;
+        background: #0a66c2;
+        color: #fff;
+        font-family: 'Albert Sans', sans-serif;
+        font-weight: 700;
+        font-size: 0.88rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        transition:
+          background 0.2s ease,
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+        box-shadow: 0 6px 16px rgba(10, 102, 194, 0.28);
+        align-self: flex-start;
+      }
+      .linkedin-link:hover {
+        background: #004182;
+        transform: translateY(-1px);
+        box-shadow: 0 10px 22px rgba(10, 102, 194, 0.32);
+      }
+      .linkedin-link svg {
+        width: 18px;
+        height: 18px;
+        fill: #fff;
+        flex-shrink: 0;
+      }
+
+      /* ── Values strip ── */
+      .values-strip {
+        margin-top: 32px;
+        padding: 40px 0 0;
+      }
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .value-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        padding: 28px 26px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .value-card h3 {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+        letter-spacing: 0.14em;
+        color: var(--brand-strong);
+      }
+      .value-card p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: var(--ink-soft);
+        line-height: 1.65;
+      }
+
+      /* ── CTA strip ── */
+      .about-cta {
+        background: linear-gradient(
+          180deg,
+          rgba(253, 230, 212, 0.9),
+          rgba(253, 230, 212, 0.55)
+        );
+        border-radius: var(--radius);
+        padding: 44px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        text-align: center;
+        margin-top: 32px;
+      }
+      .about-cta h2 {
+        margin-top: 0;
+        margin-bottom: 12px;
+        font-size: 1.15rem;
+      }
+      .about-cta p {
+        color: var(--ink-soft);
+        margin-bottom: 24px;
+        font-size: 1rem;
+        text-transform: none;
+        letter-spacing: 0;
+        font-family: Inter, system-ui, sans-serif;
+        font-weight: 400;
+      }
+
+      /* ── Footer ── */
+      footer {
+        padding: 52px 0 68px;
+        text-align: center;
+        font-size: 0.95rem;
+        color: #6b625a;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 1200px) {
+        .nav-links {
+          display: none;
+        }
+        .nav-inner {
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+          align-items: center;
+        }
+        .nav-inner > a:first-child {
+          grid-column: 2;
+          justify-self: center;
+        }
+        .nav-inner .hamburger {
+          grid-column: 3;
+          justify-self: end;
+        }
+        .page-hero-card {
+          padding: 34px;
+        }
+        .page-hero {
+          padding: 20px 0 0;
+        }
+        .profile-card {
+          padding: 32px;
+        }
+        .values-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 1.5rem;
+          letter-spacing: 0.08em;
+        }
+        .page-hero-card {
+          padding: 24px;
+        }
+        .about-section {
+          padding: 40px 0 60px;
+        }
+        .profile-card {
+          padding: 24px;
+        }
+        .profile-inner {
+          flex-direction: column;
+          gap: 24px;
+        }
+        .profile-photo-col img {
+          width: 120px;
+          height: 120px;
+        }
+        .values-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ── Hamburger button ── */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 8px;
+        transition: background 0.15s ease;
+        z-index: 20;
+      }
+      .hamburger:hover {
+        background: var(--brand-soft);
+      }
+      .hamburger span {
+        display: block;
+        height: 2px;
+        background: var(--ink);
+        border-radius: 2px;
+        transition:
+          transform 0.25s ease,
+          opacity 0.2s ease,
+          width 0.2s ease;
+        transform-origin: center;
+      }
+      .hamburger span:nth-child(1) {
+        width: 22px;
+      }
+      .hamburger span:nth-child(2) {
+        width: 16px;
+      }
+      .hamburger span:nth-child(3) {
+        width: 22px;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+        width: 22px;
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+        width: 22px;
+      }
+
+      /* ── Mobile drawer ── */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 15;
+        background: rgba(47, 42, 37, 0.35);
+        backdrop-filter: blur(2px);
+        opacity: 0;
+        transition: opacity 0.25s ease;
+        pointer-events: none;
+      }
+      .mobile-menu.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .mobile-drawer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: min(320px, 85vw);
+        height: 100%;
+        background: var(--paper);
+        padding: 80px 32px 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -8px 0 32px rgba(0, 0, 0, 0.12);
+      }
+      .mobile-menu.open .mobile-drawer {
+        transform: translateX(0);
+      }
+      .mobile-drawer a {
+        display: block;
+        padding: 12px 16px;
+        font-family: Inter, system-ui, sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: 0;
+        text-transform: none;
+        color: var(--ink);
+        border-radius: 10px;
+        transition:
+          background 0.15s ease,
+          color 0.15s ease;
+      }
+      .mobile-drawer a:hover {
+        background: var(--brand-soft);
+        color: var(--brand-strong);
+      }
+      .mobile-drawer a.active {
+        color: var(--brand-strong);
+      }
+      .mobile-drawer .mobile-divider {
+        height: 1px;
+        background: rgba(0, 0, 0, 0.07);
+        margin: 8px 0;
+      }
+      /* Book a call pill — matches desktop btn-primary */
+      .mobile-drawer .btn-primary {
+        margin-top: 8px;
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-family: 'Albert Sans', sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        letter-spacing: 0;
+        text-transform: none;
+        background: var(--brand-strong);
+        color: #fff;
+        box-shadow: 0 8px 18px rgba(47, 42, 37, 0.18);
+        text-align: center;
+        justify-content: center;
+        transition:
+          background 0.2s ease,
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+      .mobile-drawer .btn-primary:hover {
+        background: #c96523;
+        transform: translateY(-1px);
+        box-shadow: 0 12px 22px rgba(47, 42, 37, 0.2);
+        color: #fff;
+      }
+      @media (max-width: 1200px) {
+        .hamburger {
+          display: flex;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container nav-inner">
+        <a href="/"
+          ><img
+            src="/assets/logo.jpg"
+            alt="Sunrise Safeguarding"
+            class="brand-logo"
+        /></a>
+        <nav class="nav-links">
+          <a href="/#services">Services</a>
+          <a href="/#approach">Approach</a>
+          <a href="/#values">Values</a>
+          <a href="/#who">Who we work with</a>
+          <a href="/about.html" class="active">About</a>
+          <a href="/blog/">Blog</a>
+          <a href="/resources/">Resources</a>
+          <a href="/faqs.html">FAQs</a>
+          <a href="/#contact" class="btn btn-primary">Book a call</a>
+        </nav>
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation"
+    >
+      <div class="mobile-drawer">
+        <a href="/about.html" class="active">About</a>
+        <a href="/blog/">Blog</a>
+        <a href="/resources/">Resources</a>
+        <a href="/faqs.html">FAQs</a>
+        <div class="mobile-divider"></div>
+        <a href="/#contact" class="btn btn-primary">Book a call</a>
+      </div>
+    </div>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <div class="page-hero-card">
+            <h1>About</h1>
+            <p class="lead">
+              The person behind Sunrise Safeguarding — and why this work
+              matters.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <div class="container">
+          <div class="profile-card">
+            <div class="profile-inner">
+              <div class="profile-photo-col">
+                <img
+                  src="/assets/erin-faure.jpg"
+                  alt="Erin Faure — Safeguarding Specialist"
+                />
+              </div>
+              <div class="profile-content">
+                <span class="profile-role"
+                  >Founder &amp; Safeguarding Specialist</span
+                >
+                <h2 class="profile-name">Erin Faure</h2>
+
+                <div class="profile-bio">
+                  <p>
+                    Erin is a highly experienced social worker and safeguarding
+                    specialist with nearly 20 years working in child protection
+                    and alongside vulnerable adults across a wide range of
+                    settings. After qualifying in Johannesburg in 2006, she
+                    founded the Tshepo Community Development Initiative in
+                    Northcliff, working in partnership with churches, police,
+                    and local government to support people experiencing
+                    homelessness through skills development and employment
+                    opportunities — creating pathways out of homelessness and
+                    restoring hope, dignity, and stability.
+                  </p>
+
+                  <p>
+                    She later moved to the UK, where she worked in statutory
+                    Child Protection in a diverse London borough. In this role,
+                    she partnered with schools, health services, police, and
+                    NGOs, leading complex safeguarding work in high-risk
+                    situations. Her experience includes managing crisis teams,
+                    responding to serious safeguarding concerns, and supporting
+                    organisations to build systems that are not only compliant,
+                    but genuinely centred on listening to children and families.
+                  </p>
+
+                  <p>
+                    Returning to South Africa in 2023, Erin now works at a
+                    strategic level with schools, NGOs, faith-based
+                    organisations, corporates, and community services across the
+                    country. She supports boards, leaders, and frontline staff
+                    to understand their safeguarding responsibilities,
+                    strengthen governance and accountability, and build cultures
+                    where safety, dignity, and respect are part of everyday
+                    practice.
+                  </p>
+
+                  <p>
+                    Her approach is trauma-informed, rights-based, and grounded
+                    in both international best practice and local South African
+                    realities. Erin is passionate about making safeguarding
+                    practical, human, and accessible — moving it from "a policy
+                    on paper" to something that lives in classrooms, boardrooms,
+                    staff rooms, and community spaces, so that children and
+                    vulnerable people are not only protected, but truly seen,
+                    heard, and valued.
+                  </p>
+                </div>
+
+                <a
+                  href="https://www.linkedin.com/in/erin-faure-70056a54/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="linkedin-link"
+                >
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                    />
+                  </svg>
+                  Connect on LinkedIn
+                </a>
+              </div>
+            </div>
+            <!-- /.profile-inner -->
+          </div>
+
+          <div class="values-strip">
+            <div class="values-grid">
+              <div class="value-card">
+                <h3>Trauma-Informed</h3>
+                <p>
+                  Every interaction is shaped by an understanding of how trauma
+                  affects people, behaviour, and trust — moving at the pace of
+                  safety, not paperwork.
+                </p>
+              </div>
+              <div class="value-card">
+                <h3>Rights-Based</h3>
+                <p>
+                  Grounded in the belief that every child and vulnerable adult
+                  has the right to be safe, heard, and treated with dignity —
+                  regardless of circumstance.
+                </p>
+              </div>
+              <div class="value-card">
+                <h3>Contextually Grounded</h3>
+                <p>
+                  International best practice meets local South African
+                  realities — safeguarding that is practical, culturally
+                  sensitive, and genuinely protective.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-cta">
+            <h2>Work with Erin</h2>
+            <p>
+              Whether you need a safeguarding audit, training, policy support,
+              or strategic guidance, Erin brings nearly two decades of
+              experience to your organisation.
+            </p>
+            <a href="/#contact" class="btn btn-primary">Book a consultation</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>© <span id="year"></span> Sunrise Safeguarding</footer>
+    <script type="module">
+      import { createClient } from 'https://esm.sh/@sanity/client@6';
+
+      const client = createClient({
+        projectId: '2vw3tpvg',
+        dataset: 'production',
+        apiVersion: '2024-01-01',
+        useCdn: true, // 🔥 disable cache during development
+      });
+
+      client
+        .fetch(
+          `
+      *[_type=="about" && _id=="aboutPage"][0]{
+        heroTitle,
+        heroText,
+        roleLabel,
+        name,
+        profileImage{
+          asset->{url}
+        },
+        bio[],
+        linkedinUrl,
+        values[]{title,text},
+        ctaTitle,
+        ctaText,
+        ctaButton
+      }
+    `,
+        )
+        .then((d) => {
+          if (!d) return;
+
+          /* =====================
+         HERO
+      ====================== */
+          if (d.heroTitle) {
+            document.querySelector('.page-hero h1').textContent = d.heroTitle;
+          }
+
+          if (d.heroText) {
+            document.querySelector('.page-hero .lead').textContent = d.heroText;
+          }
+
+          /* =====================
+         PROFILE
+      ====================== */
+          if (d.roleLabel) {
+            document.querySelector('.profile-role').textContent = d.roleLabel;
+          }
+
+          if (d.name) {
+            document.querySelector('.profile-name').textContent = d.name;
+          }
+
+          if (d.profileImage?.asset?.url) {
+            document.querySelector('.profile-photo-col img').src =
+              d.profileImage.asset.url;
+          }
+
+          if (Array.isArray(d.bio)) {
+            const bioContainer = document.querySelector('.profile-bio');
+            bioContainer.innerHTML = '';
+            d.bio.forEach((block) => {
+              if (block._type === 'block' && block.children) {
+                const text = block.children.map((c) => c.text).join('');
+                bioContainer.insertAdjacentHTML('beforeend', `<p>${text}</p>`);
+              }
+            });
+          }
+
+          if (d.linkedinUrl) {
+            document.querySelector('.linkedin-link').href = d.linkedinUrl;
+          }
+
+          /* =====================
+         VALUES
+      ====================== */
+          if (Array.isArray(d.values)) {
+            const valuesGrid = document.querySelector('.values-grid');
+            valuesGrid.innerHTML = '';
+
+            d.values.forEach((v) => {
+              valuesGrid.insertAdjacentHTML(
+                'beforeend',
+                `
+            <div class="value-card">
+              <h3>${v.title}</h3>
+              <p>${v.text}</p>
+            </div>
+          `,
+              );
+            });
+          }
+
+          /* =====================
+         CTA
+      ====================== */
+          if (d.ctaTitle) {
+            document.querySelector('.about-cta h2').textContent = d.ctaTitle;
+          }
+
+          if (d.ctaText) {
+            document.querySelector('.about-cta p').textContent = d.ctaText;
+          }
+
+          if (d.ctaButton) {
+            document.querySelector('.about-cta .btn-primary').textContent =
+              d.ctaButton;
+          }
+        })
+        .catch(console.error);
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      function toggleMenu(open) {
+        hamburger.classList.toggle('open', open);
+        mobileMenu.style.display = open ? 'block' : 'none';
+        requestAnimationFrame(() => mobileMenu.classList.toggle('open', open));
+        hamburger.setAttribute('aria-expanded', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+
+      hamburger.addEventListener('click', () =>
+        toggleMenu(!hamburger.classList.contains('open')),
+      );
+
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) toggleMenu(false);
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') toggleMenu(false);
+      });
+    </script>
+  </body>
+</html>

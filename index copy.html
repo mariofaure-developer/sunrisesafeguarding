@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -41,16 +41,8 @@
         font-family: Inter, system-ui, sans-serif;
         color: var(--ink);
         background:
-          radial-gradient(
-            ellipse 900px 600px at 8% 0%,
-            rgba(240, 138, 60, 0.22) 0%,
-            transparent 70%
-          ),
-          radial-gradient(
-            ellipse 600px 400px at 92% 5%,
-            rgba(240, 138, 60, 0.1) 0%,
-            transparent 65%
-          ),
+          radial-gradient(ellipse 900px 600px at 8% 0%, rgba(240, 138, 60, 0.22) 0%, transparent 70%),
+          radial-gradient(ellipse 600px 400px at 92% 5%, rgba(240, 138, 60, 0.10) 0%, transparent 65%),
           var(--paper);
         background-attachment: fixed;
         line-height: 1.65;
@@ -80,9 +72,7 @@
         gap: 16px;
       }
       @media (min-width: 1201px) {
-        .hamburger {
-          display: none !important;
-        }
+        .hamburger { display: none !important; }
       }
       .brand-logo {
         max-height: 150px;
@@ -102,9 +92,7 @@
         font-weight: 700;
         border: none;
         cursor: pointer;
-        transition:
-          transform 0.15s ease,
-          box-shadow 0.15s ease,
+        transition: transform 0.15s ease, box-shadow 0.15s ease,
           background 0.2s ease;
         display: inline-flex;
         align-items: center;
@@ -332,49 +320,27 @@
         transition: background 0.15s ease;
         z-index: 20;
       }
-      .hamburger:hover {
-        background: var(--brand-soft);
-      }
+      .hamburger:hover { background: var(--brand-soft); }
       .hamburger span {
         display: block;
         height: 2px;
         background: var(--ink);
         border-radius: 2px;
-        transition:
-          transform 0.25s ease,
-          opacity 0.2s ease,
-          width 0.2s ease;
+        transition: transform 0.25s ease, opacity 0.2s ease, width 0.2s ease;
         transform-origin: center;
       }
-      .hamburger span:nth-child(1) {
-        width: 22px;
-      }
-      .hamburger span:nth-child(2) {
-        width: 16px;
-      }
-      .hamburger span:nth-child(3) {
-        width: 22px;
-      }
-      .hamburger.open span:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
-        width: 22px;
-      }
-      .hamburger.open span:nth-child(2) {
-        opacity: 0;
-      }
-      .hamburger.open span:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-        width: 22px;
-      }
+      .hamburger span:nth-child(1) { width: 22px; }
+      .hamburger span:nth-child(2) { width: 16px; }
+      .hamburger span:nth-child(3) { width: 22px; }
+      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 22px; }
+      .hamburger.open span:nth-child(2) { opacity: 0; }
+      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 22px; }
 
       /* ── Mobile drawer ── */
       .mobile-menu {
         display: none;
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        top: 0; left: 0; right: 0; bottom: 0;
         z-index: 15;
         background: rgba(47, 42, 37, 0.35);
         backdrop-filter: blur(2px);
@@ -382,14 +348,10 @@
         transition: opacity 0.25s ease;
         pointer-events: none;
       }
-      .mobile-menu.open {
-        opacity: 1;
-        pointer-events: all;
-      }
+      .mobile-menu.open { opacity: 1; pointer-events: all; }
       .mobile-drawer {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 0; right: 0;
         width: min(320px, 85vw);
         height: 100%;
         background: var(--paper);
@@ -399,11 +361,9 @@
         gap: 8px;
         transform: translateX(100%);
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -8px 0 32px rgba(0, 0, 0, 0.12);
+        box-shadow: -8px 0 32px rgba(0,0,0,0.12);
       }
-      .mobile-menu.open .mobile-drawer {
-        transform: translateX(0);
-      }
+      .mobile-menu.open .mobile-drawer { transform: translateX(0); }
       .mobile-drawer a {
         display: block;
         padding: 12px 16px;
@@ -414,20 +374,13 @@
         text-transform: none;
         color: var(--ink);
         border-radius: 10px;
-        transition:
-          background 0.15s ease,
-          color 0.15s ease;
+        transition: background 0.15s ease, color 0.15s ease;
       }
-      .mobile-drawer a:hover {
-        background: var(--brand-soft);
-        color: var(--brand-strong);
-      }
-      .mobile-drawer a.active {
-        color: var(--brand-strong);
-      }
+      .mobile-drawer a:hover { background: var(--brand-soft); color: var(--brand-strong); }
+      .mobile-drawer a.active { color: var(--brand-strong); }
       .mobile-drawer .mobile-divider {
         height: 1px;
-        background: rgba(0, 0, 0, 0.07);
+        background: rgba(0,0,0,0.07);
         margin: 8px 0;
       }
       /* Book a call pill — matches desktop btn-primary */
@@ -445,10 +398,7 @@
         box-shadow: 0 8px 18px rgba(47, 42, 37, 0.18);
         text-align: center;
         justify-content: center;
-        transition:
-          background 0.2s ease,
-          transform 0.15s ease,
-          box-shadow 0.15s ease;
+        transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
       }
       .mobile-drawer .btn-primary:hover {
         background: #c96523;
@@ -457,9 +407,7 @@
         color: #fff;
       }
       @media (max-width: 1200px) {
-        .hamburger {
-          display: flex;
-        }
+        .hamburger { display: flex; }
       }
     </style>
   </head>
@@ -484,24 +432,13 @@
           <a href="/faqs.html">FAQs</a>
           <a href="#contact" class="btn btn-primary">Book a call</a>
         </nav>
-        <button
-          class="hamburger"
-          id="hamburger"
-          aria-label="Open menu"
-          aria-expanded="false"
-        >
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
     </header>
 
-    <div
-      class="mobile-menu"
-      id="mobileMenu"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Navigation"
-    >
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
       <div class="mobile-drawer">
         <a href="/about.html">About</a>
         <a href="/blog/">Blog</a>
@@ -666,14 +603,44 @@
     </main>
 
     <footer>© <span id="year"></span> Sunrise Safeguarding</footer>
-    <script>
-      async function loadHome() {
-        try {
-          const res = await fetch('/.netlify/functions/home');
-          const d = await res.json();
+    <script type="module">
+      import { createClient } from 'https://esm.sh/@sanity/client@6';
+
+      const client = createClient({
+        projectId: '2vw3tpvg',
+        dataset: 'production',
+        apiVersion: '2024-01-01',
+        useCdn: true, // instant updates while working
+      });
+
+      client
+        .fetch(
+          `
+      *[_type=="home"][0]{
+        heading,
+        heroText,
+        heroCta,
+        heroPills[]{label},
+        servicesTitle,
+        services[]{title, description},
+        approachTitle,
+        approachItems[]{title, text},
+        valuesTitle,
+        valuesText,
+        whoTitle,
+        whoText,
+        contactTitle,
+        contactDesc,
+        contactEmail
+      }
+    `
+        )
+        .then((d) => {
           if (!d) return;
 
-          /* HERO */
+          /* =====================
+         HERO
+      ====================== */
           if (d.heading)
             document.getElementById('hero-heading').textContent = d.heading;
 
@@ -690,16 +657,22 @@
             d.heroPills.forEach((p) => {
               pillRow.insertAdjacentHTML(
                 'beforeend',
-                `<span class="pill">${p.label}</span>`,
+                `<span class="pill">${p.label}</span>`
               );
             });
           }
 
-          /* SERVICES */
+          /* =====================
+         SERVICES
+      ====================== */
+          /* =====================
+   SERVICES (KEEP ICONS)
+===================== */
           const servicesSection = document.getElementById('services');
 
-          if (d.servicesTitle)
+          if (d.servicesTitle) {
             servicesSection.querySelector('h2').textContent = d.servicesTitle;
+          }
 
           if (Array.isArray(d.services)) {
             const cards = servicesSection.querySelectorAll('.card');
@@ -708,73 +681,86 @@
               const card = cards[index];
               if (!card) return;
 
-              if (service.title)
-                card.querySelector('h3').textContent = service.title;
+              const titleEl = card.querySelector('h3');
+              const descEl = card.querySelector('p');
 
-              if (service.description)
-                card.querySelector('p').textContent = service.description;
+              if (titleEl && service.title) {
+                titleEl.textContent = service.title;
+              }
+
+              if (descEl && service.description) {
+                descEl.textContent = service.description;
+              }
             });
           }
 
-          /* APPROACH */
+          /* =====================
+         APPROACH
+      ====================== */
           const approachSection = document.getElementById('approach');
-
           if (d.approachTitle)
             approachSection.querySelector('h2').textContent = d.approachTitle;
 
           if (Array.isArray(d.approachItems)) {
             const grid = approachSection.querySelector('.grid');
             grid.innerHTML = '';
-
             d.approachItems.forEach((a) => {
               grid.insertAdjacentHTML(
                 'beforeend',
-                `<div class="card">
-             <h3>${a.title}</h3>
-             <p>${a.text}</p>
-           </div>`,
+                `
+            <div class="card">
+              <h3>${a.title}</h3>
+              <p>${a.text}</p>
+            </div>
+          `
               );
             });
           }
 
-          /* VALUES */
+          /* =====================
+         VALUES
+      ====================== */
           const valuesSection = document.getElementById('values');
           if (d.valuesTitle)
             valuesSection.querySelector('h2').textContent = d.valuesTitle;
+
           if (d.valuesText)
             valuesSection.querySelector('p').textContent = d.valuesText;
 
-          /* WHO */
+          /* =====================
+         WHO WE WORK WITH
+      ====================== */
           const whoSection = document.getElementById('who');
           if (d.whoTitle)
             whoSection.querySelector('h2').textContent = d.whoTitle;
+
           if (d.whoText) whoSection.querySelector('p').textContent = d.whoText;
 
-          /* CONTACT */
-          if (d.contactTitle)
-            document.getElementById('contact-title').textContent =
+          /* =====================
+   CONTACT
+===================== */
+          const contactSection = document.getElementById('contact');
+
+          if (d.contactTitle) {
+            contactSection.querySelector('#contact-title').textContent =
               d.contactTitle;
+          }
 
-          if (d.contactDesc)
-            document.getElementById('contact-desc').textContent = d.contactDesc;
+          if (d.contactDesc) {
+            contactSection.querySelector('#contact-desc').textContent =
+              d.contactDesc;
+          }
 
-          if (d.contactEmail)
-            document.getElementById('contact-email').textContent =
+          if (d.contactEmail) {
+            contactSection.querySelector('#contact-email').textContent =
               d.contactEmail;
-        } catch (err) {
-          console.error('Homepage load error:', err);
-        }
-      }
+          }
+        })
+        .catch(console.error);
 
-      loadHome();
-
-      /* Footer year */
       document.getElementById('year').textContent = new Date().getFullYear();
-
-      /* Mobile menu */
       const hamburger = document.getElementById('hamburger');
       const mobileMenu = document.getElementById('mobileMenu');
-
       function toggleMenu(open) {
         hamburger.classList.toggle('open', open);
         mobileMenu.style.display = open ? 'block' : 'none';
@@ -782,18 +768,9 @@
         hamburger.setAttribute('aria-expanded', open);
         document.body.style.overflow = open ? 'hidden' : '';
       }
-
-      hamburger.addEventListener('click', () =>
-        toggleMenu(!hamburger.classList.contains('open')),
-      );
-
-      mobileMenu.addEventListener('click', (e) => {
-        if (e.target === mobileMenu) toggleMenu(false);
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') toggleMenu(false);
-      });
+      hamburger.addEventListener('click', () => toggleMenu(!hamburger.classList.contains('open')));
+      mobileMenu.addEventListener('click', (e) => { if (e.target === mobileMenu) toggleMenu(false); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleMenu(false); });
     </script>
   </body>
 </html>

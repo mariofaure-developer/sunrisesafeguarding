@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FAQs — Sunrise Safeguarding</title>
+    <meta
+      name="description"
+      content="Frequently asked questions about safeguarding — what it is, why it matters, and what good safeguarding looks like in practice."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --brand: #f08a3c;
+        --brand-strong: #d8742e;
+        --brand-soft: #fde6d4;
+        --ink: #2f2a25;
+        --ink-soft: #5e564e;
+        --paper: #fbfbf7;
+        --white: #ffffff;
+        --radius: 16px;
+        --shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+        --max: 1120px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(
+            ellipse 900px 600px at 8% 0%,
+            rgba(240, 138, 60, 0.22) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 600px 400px at 92% 5%,
+            rgba(240, 138, 60, 0.1) 0%,
+            transparent 65%
+          ),
+          var(--paper);
+        background-attachment: fixed;
+        line-height: 1.65;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(var(--max), calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      /* ── Header ── */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(251, 251, 247, 1);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .nav-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 0;
+        gap: 16px;
+      }
+      @media (min-width: 1201px) {
+        .hamburger {
+          display: none !important;
+        }
+      }
+      .brand-logo {
+        max-height: 150px;
+        display: block;
+      }
+      .nav-links {
+        display: flex;
+        gap: 22px;
+        align-items: center;
+        font-weight: 600;
+      }
+      .nav-links a.active {
+        color: var(--brand-strong);
+      }
+
+      /* ── Buttons ── */
+      .btn {
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-family: 'Albert Sans', sans-serif;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease,
+          background 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-primary {
+        background: var(--brand-strong);
+        color: #fff;
+        box-shadow: 0 8px 18px rgba(47, 42, 37, 0.18);
+      }
+      .btn-primary:hover {
+        background: #c96523;
+        transform: translateY(-1px);
+        box-shadow: 0 12px 22px rgba(47, 42, 37, 0.2);
+      }
+
+      /* ── Page hero ── */
+      .page-hero {
+        padding: 72px 0 0;
+        background: transparent;
+      }
+      .page-hero-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 64px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        position: relative;
+        overflow: hidden;
+      }
+      .page-hero-card::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        background: linear-gradient(
+          135deg,
+          rgba(240, 138, 60, 0.18),
+          transparent 55%
+        );
+        pointer-events: none;
+      }
+      .page-hero-card > * {
+        position: relative;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: 'Albert Sans', sans-serif;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin-top: 0;
+      }
+      h1 {
+        font-size: clamp(1.75rem, 5vw, 3.2rem);
+        margin-bottom: 12px;
+        letter-spacing: 0.12em;
+        line-height: 1.2;
+      }
+
+      .lead {
+        font-size: 1.1rem;
+        max-width: 68ch;
+        margin-top: 18px;
+        color: var(--ink-soft);
+        margin-bottom: 0;
+      }
+
+      /* ── FAQ section ── */
+      .faq-section {
+        padding: 64px 0 80px;
+      }
+      .faq-list {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      /* ── Accordion item ── */
+      details {
+        background: var(--white);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+        transition: box-shadow 0.2s ease;
+      }
+      details[open] {
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
+      }
+      summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 24px 28px;
+        cursor: pointer;
+        list-style: none;
+        font-family: 'Albert Sans', sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink);
+        user-select: none;
+        transition: color 0.15s ease;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      details[open] summary {
+        color: var(--brand-strong);
+      }
+      summary:hover {
+        color: var(--brand-strong);
+      }
+
+      .faq-icon {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--brand-soft);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          background 0.2s ease,
+          transform 0.25s ease;
+      }
+      details[open] .faq-icon {
+        background: var(--brand-strong);
+        transform: rotate(45deg);
+      }
+      .faq-icon svg {
+        width: 12px;
+        height: 12px;
+        stroke: var(--brand-strong);
+        stroke-width: 2.5;
+        fill: none;
+        stroke-linecap: round;
+        transition: stroke 0.2s ease;
+      }
+      details[open] .faq-icon svg {
+        stroke: #fff;
+      }
+
+      .faq-body {
+        padding: 0 28px 24px;
+        font-size: 1rem;
+        color: var(--ink-soft);
+        line-height: 1.75;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        margin-top: -1px;
+      }
+      .faq-body p {
+        margin: 16px 0 0;
+      }
+
+      /* ── CTA strip ── */
+      .faq-cta {
+        background: linear-gradient(
+          180deg,
+          rgba(253, 230, 212, 0.9),
+          rgba(253, 230, 212, 0.55)
+        );
+        border-radius: var(--radius);
+        padding: 44px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        text-align: center;
+        max-width: 800px;
+        margin: 48px auto 0;
+      }
+      .faq-cta h2 {
+        margin-top: 0;
+        margin-bottom: 12px;
+        font-size: 1.15rem;
+      }
+      .faq-cta p {
+        color: var(--ink-soft);
+        margin-bottom: 24px;
+        font-size: 1rem;
+        text-transform: none;
+        letter-spacing: 0;
+        font-family: Inter, system-ui, sans-serif;
+        font-weight: 400;
+      }
+
+      /* ── Footer ── */
+      footer {
+        padding: 52px 0 68px;
+        text-align: center;
+        font-size: 0.95rem;
+        color: #6b625a;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 1200px) {
+        .nav-links {
+          display: none;
+        }
+        .nav-inner {
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+          align-items: center;
+        }
+        .nav-inner > a:first-child {
+          grid-column: 2;
+          justify-self: center;
+        }
+        .nav-inner .hamburger {
+          grid-column: 3;
+          justify-self: end;
+        }
+        .page-hero-card {
+          padding: 34px;
+        }
+        .page-hero {
+          padding: 20px 0 0;
+        }
+        .faq-list {
+          max-width: 100%;
+        }
+        .faq-cta {
+          max-width: 100%;
+        }
+      }
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 1.5rem;
+          letter-spacing: 0.08em;
+        }
+        .page-hero-card {
+          padding: 24px;
+        }
+        .faq-section {
+          padding: 40px 0 60px;
+        }
+        summary {
+          padding: 20px 20px;
+          font-size: 0.88rem;
+        }
+        .faq-body {
+          padding: 0 20px 20px;
+        }
+      }
+
+      /* ── Hamburger button ── */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 8px;
+        transition: background 0.15s ease;
+        z-index: 20;
+      }
+      .hamburger:hover {
+        background: var(--brand-soft);
+      }
+      .hamburger span {
+        display: block;
+        height: 2px;
+        background: var(--ink);
+        border-radius: 2px;
+        transition:
+          transform 0.25s ease,
+          opacity 0.2s ease,
+          width 0.2s ease;
+        transform-origin: center;
+      }
+      .hamburger span:nth-child(1) {
+        width: 22px;
+      }
+      .hamburger span:nth-child(2) {
+        width: 16px;
+      }
+      .hamburger span:nth-child(3) {
+        width: 22px;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+        width: 22px;
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+        width: 22px;
+      }
+
+      /* ── Mobile drawer ── */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 15;
+        background: rgba(47, 42, 37, 0.35);
+        backdrop-filter: blur(2px);
+        opacity: 0;
+        transition: opacity 0.25s ease;
+        pointer-events: none;
+      }
+      .mobile-menu.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .mobile-drawer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: min(320px, 85vw);
+        height: 100%;
+        background: var(--paper);
+        padding: 80px 32px 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -8px 0 32px rgba(0, 0, 0, 0.12);
+      }
+      .mobile-menu.open .mobile-drawer {
+        transform: translateX(0);
+      }
+      .mobile-drawer a {
+        display: block;
+        padding: 12px 16px;
+        font-family: Inter, system-ui, sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: 0;
+        text-transform: none;
+        color: var(--ink);
+        border-radius: 10px;
+        transition:
+          background 0.15s ease,
+          color 0.15s ease;
+      }
+      .mobile-drawer a:hover {
+        background: var(--brand-soft);
+        color: var(--brand-strong);
+      }
+      .mobile-drawer a.active {
+        color: var(--brand-strong);
+      }
+      .mobile-drawer .mobile-divider {
+        height: 1px;
+        background: rgba(0, 0, 0, 0.07);
+        margin: 8px 0;
+      }
+      /* Book a call pill — matches desktop btn-primary */
+      .mobile-drawer .btn-primary {
+        margin-top: 8px;
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-family: 'Albert Sans', sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        letter-spacing: 0;
+        text-transform: none;
+        background: var(--brand-strong);
+        color: #fff;
+        box-shadow: 0 8px 18px rgba(47, 42, 37, 0.18);
+        text-align: center;
+        justify-content: center;
+        transition:
+          background 0.2s ease,
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+      .mobile-drawer .btn-primary:hover {
+        background: #c96523;
+        transform: translateY(-1px);
+        box-shadow: 0 12px 22px rgba(47, 42, 37, 0.2);
+        color: #fff;
+      }
+      @media (max-width: 1200px) {
+        .hamburger {
+          display: flex;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container nav-inner">
+        <a href="/"
+          ><img
+            src="/assets/logo.jpg"
+            alt="Sunrise Safeguarding"
+            class="brand-logo"
+        /></a>
+        <nav class="nav-links">
+          <a href="/#services">Services</a>
+          <a href="/#approach">Approach</a>
+          <a href="/#values">Values</a>
+          <a href="/#who">Who we work with</a>
+          <a href="/about.html">About</a>
+          <a href="/blog/">Blog</a>
+          <a href="/resources/">Resources</a>
+          <a href="/faqs.html" class="active">FAQs</a>
+          <a href="/#contact" class="btn btn-primary">Book a call</a>
+        </nav>
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation"
+    >
+      <div class="mobile-drawer">
+        <a href="/about.html">About</a>
+        <a href="/blog/">Blog</a>
+        <a href="/resources/">Resources</a>
+        <a href="/faqs.html" class="active">FAQs</a>
+        <div class="mobile-divider"></div>
+        <a href="/#contact" class="btn btn-primary">Book a call</a>
+      </div>
+    </div>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <div class="page-hero-card">
+            <h1>FAQs</h1>
+            <p class="lead">
+              Answers to common questions about safeguarding — what it is, why
+              it matters, and what good practice looks like.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-section">
+        <div class="container">
+          <div class="faq-list">
+            <details>
+              <summary>
+                What is safeguarding?
+                <span class="faq-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" /></svg
+                ></span>
+              </summary>
+              <div class="faq-body">
+                <p>
+                  Safeguarding is about creating environments where people are
+                  safe, respected, and protected from harm. It is not only about
+                  responding when something goes wrong, but about how
+                  organisations think, act, and make decisions every day to
+                  reduce risk and increase safety, dignity, and care.
+                  Safeguarding includes prevention as well as response, culture
+                  as well as policy, and leadership as well as frontline
+                  practice.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                Why is safeguarding important?
+                <span class="faq-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" /></svg
+                ></span>
+              </summary>
+              <div class="faq-body">
+                <p>
+                  Safeguarding matters because harm rarely starts with a crisis.
+                  It usually begins quietly, in small moments where people feel
+                  unsure, unsupported, or afraid to speak. Good safeguarding
+                  protects children and vulnerable adults, supports staff and
+                  volunteers, and protects organisations from crisis and loss of
+                  trust. It builds cultures where people feel safe to raise
+                  concerns early, before harm becomes serious.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                What difference does safeguarding actually make?
+                <span class="faq-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" /></svg
+                ></span>
+              </summary>
+              <div class="faq-body">
+                <p>
+                  When safeguarding is strong, people speak up sooner, risks are
+                  noticed earlier, and decisions are calmer and clearer.
+                  Mistakes become opportunities for learning rather than blame,
+                  and children and vulnerable adults are safer in real,
+                  practical ways. Safeguarding changes how people behave, not
+                  just what they know.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                What's the difference between safeguarding and health and
+                safety?
+                <span class="faq-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" /></svg
+                ></span>
+              </summary>
+              <div class="faq-body">
+                <p>
+                  Health and safety focuses mainly on physical risks such as
+                  buildings, equipment, accidents, and procedures. Safeguarding
+                  focuses on people, including abuse, neglect, exploitation,
+                  power, boundaries, and emotional and relational safety. Health
+                  and safety asks whether a space is physically safe, while
+                  safeguarding asks whether the people in that space are safe
+                  from harm by others and by systems. Both matter, but they are
+                  not the same thing.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                What's the difference between safeguarding and child protection?
+                <span class="faq-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" /></svg
+                ></span>
+              </summary>
+              <div class="faq-body">
+                <p>
+                  Child protection is part of safeguarding, but it is not the
+                  whole picture. Child protection focuses on responding when
+                  serious harm or abuse is suspected and often involves
+                  statutory services like social services or the police.
+                  Safeguarding includes child protection but also covers
+                  prevention, culture, training, systems, leadership, and early
+                  action. Safeguarding is the whole landscape, and child
+                  protection is one part of it.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                Why should organisations invest in good safeguarding?
+                <span class="faq-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" /></svg
+                ></span>
+              </summary>
+              <div class="faq-body">
+                <p>
+                  Safeguarding is not a cost, it is a form of protection. Good
+                  safeguarding reduces crisis and reputational damage, prevents
+                  legal and financial risk, supports staff to work with
+                  confidence, and builds trust with families, communities, and
+                  partners. Organisations that invest in safeguarding do not
+                  just avoid harm, they become trusted.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                What does safeguarding for children look like?
+                <span class="faq-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" /></svg
+                ></span>
+              </summary>
+              <div class="faq-body">
+                <p>
+                  Safeguarding for children means having safe recruitment, clear
+                  boundaries, and adults who know how to respond to concerns. It
+                  includes systems for recording and escalating worries,
+                  cultures where children are listened to, and leadership that
+                  takes responsibility rather than shortcuts. It means children
+                  are not just present, but protected, heard, and valued.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                What does safeguarding for vulnerable adults look like?
+                <span class="faq-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" /></svg
+                ></span>
+              </summary>
+              <div class="faq-body">
+                <p>
+                  Safeguarding for vulnerable adults focuses on protection from
+                  abuse, neglect, and exploitation while respecting dignity,
+                  choice, and independence. It involves safe care environments,
+                  staff who understand power, consent, and boundaries, and clear
+                  systems for reporting and responding to concerns. It is about
+                  safety without taking away people's voice.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                What is legal compliance in safeguarding?
+                <span class="faq-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" /></svg
+                ></span>
+              </summary>
+              <div class="faq-body">
+                <p>
+                  Legal compliance means meeting the minimum requirements of the
+                  law, such as having required policies, reporting when legally
+                  necessary, and following employment and care regulations. But
+                  compliance alone does not equal safety. An organisation can be
+                  legally compliant and still unsafe in practice. Good
+                  safeguarding goes beyond law into culture, leadership,
+                  training, and everyday behaviour. The law sets the floor, not
+                  the standard.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                Is safeguarding only for big organisations?
+                <span class="faq-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" /></svg
+                ></span>
+              </summary>
+              <div class="faq-body">
+                <p>
+                  Safeguarding matters wherever people are in positions of
+                  trust. This includes schools, NGOs, sports clubs, churches,
+                  care homes, community groups, and small organisations. Size
+                  does not remove responsibility.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                Is safeguarding about blame?
+                <span class="faq-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" /></svg
+                ></span>
+              </summary>
+              <div class="faq-body">
+                <p>
+                  Safeguarding is about responsibility, not blame. Strong
+                  safeguarding cultures focus on learning rather than shaming,
+                  encourage early reporting, and support people to do better
+                  rather than hide mistakes. Fear makes people unsafe, while
+                  learning protects.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                Is safeguarding just about policies?
+                <span class="faq-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" /></svg
+                ></span>
+              </summary>
+              <div class="faq-body">
+                <p>
+                  Policies are important, but they do not keep people safe on
+                  their own. People keep people safe. Safeguarding lives in how
+                  leaders respond to concerns, how staff are supported, how
+                  children and vulnerable adults are treated, and how pressure
+                  and crisis are handled. Safeguarding is not what is written.
+                  It is what actually happens.
+                </p>
+              </div>
+            </details>
+
+            <div class="faq-cta">
+              <h2>Still have questions?</h2>
+              <p>
+                We are happy to talk through your safeguarding needs and help
+                you find the right approach for your organisation.
+              </p>
+              <a href="/#contact" class="btn btn-primary">Get in touch</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>© <span id="year"></span> Sunrise Safeguarding</footer>
+    <script type="module">
+      import { createClient } from 'https://esm.sh/@sanity/client@6';
+
+      const client = createClient({
+        projectId: '2vw3tpvg',
+        dataset: 'production',
+        apiVersion: '2024-01-01',
+        useCdn: true,
+      });
+
+      client
+        .fetch(
+          `
+    *[_type=="faqPage" && _id=="faqPage"][0]{
+      heroTitle,
+      heroText,
+      faqs[]{
+        question,
+        answer[]
+      },
+      ctaTitle,
+      ctaText,
+      ctaButton
+    }
+  `,
+        )
+        .then((d) => {
+          if (!d) return;
+
+          /* HERO */
+          if (d.heroTitle) {
+            document.querySelector('.page-hero h1').textContent = d.heroTitle;
+          }
+
+          if (d.heroText) {
+            document.querySelector('.page-hero .lead').textContent = d.heroText;
+          }
+
+          /* FAQ LIST */
+          const faqList = document.querySelector('.faq-list');
+          const existingCTA = document.querySelector('.faq-cta');
+
+          if (Array.isArray(d.faqs)) {
+            faqList.innerHTML = '';
+
+            d.faqs.forEach((faq) => {
+              const answerHTML =
+                faq.answer
+                  ?.map((block) =>
+                    block.children?.map((child) => child.text).join(''),
+                  )
+                  .filter(Boolean)
+                  .map((text) => `<p>${text}</p>`)
+                  .join('') || '';
+
+              faqList.insertAdjacentHTML(
+                'beforeend',
+                `
+          <details>
+            <summary>
+              ${faq.question}
+              <span class="faq-icon">
+                <svg viewBox="0 0 24 24">
+                  <line x1="12" y1="5" x2="12" y2="19"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-body">
+              ${answerHTML}
+            </div>
+          </details>
+        `,
+              );
+            });
+
+            if (existingCTA) {
+              faqList.appendChild(existingCTA);
+            }
+          }
+
+          /* CTA */
+          if (d.ctaTitle) {
+            document.querySelector('.faq-cta h2').textContent = d.ctaTitle;
+          }
+
+          if (d.ctaText) {
+            document.querySelector('.faq-cta p').textContent = d.ctaText;
+          }
+
+          if (d.ctaButton) {
+            document.querySelector('.faq-cta .btn-primary').textContent =
+              d.ctaButton;
+          }
+        })
+        .catch(console.error);
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      function toggleMenu(open) {
+        hamburger.classList.toggle('open', open);
+        mobileMenu.style.display = open ? 'block' : 'none';
+        requestAnimationFrame(() => mobileMenu.classList.toggle('open', open));
+        hamburger.setAttribute('aria-expanded', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+
+      hamburger.addEventListener('click', () =>
+        toggleMenu(!hamburger.classList.contains('open')),
+      );
+
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) toggleMenu(false);
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') toggleMenu(false);
+      });
+    </script>
+  </body>
+</html>
