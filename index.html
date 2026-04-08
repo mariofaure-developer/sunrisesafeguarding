@@ -17,15 +17,18 @@
     />
 
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       :root {
-        --brand: #f08a3c;
-        --brand-strong: #d8742e;
-        --brand-soft: #fde6d4;
+        --brand: #2d4a3e;
+        --brand-strong: #1e3a2f;
+        --brand-soft: #e8e0d4;
 
         --ink: #2f2a25;
         --ink-soft: #5e564e;
 
-        --paper: #fbfbf7;
+        --paper: #f2ebe1;
         --white: #ffffff;
 
         --radius: 16px;
@@ -43,12 +46,12 @@
         background:
           radial-gradient(
             ellipse 900px 600px at 8% 0%,
-            rgba(240, 138, 60, 0.22) 0%,
+            rgba(45, 74, 62, 0.1) 0%,
             transparent 70%
           ),
           radial-gradient(
             ellipse 600px 400px at 92% 5%,
-            rgba(240, 138, 60, 0.1) 0%,
+            rgba(45, 74, 62, 0.06) 0%,
             transparent 65%
           ),
           var(--paper);
@@ -68,7 +71,7 @@
         position: sticky;
         top: 0;
         z-index: 10;
-        background: rgba(251, 251, 247, 1);
+        background: rgba(242, 235, 225, 1);
         backdrop-filter: blur(10px);
         border-bottom: 1px solid rgba(0, 0, 0, 0.06);
       }
@@ -76,7 +79,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 18px 0;
+        padding: 0px 0;
         gap: 16px;
       }
       @media (min-width: 1201px) {
@@ -116,13 +119,13 @@
         box-shadow: 0 8px 18px rgba(47, 42, 37, 0.18);
       }
       .btn-primary:hover {
-        background: #c96523;
+        background: #152b22;
         transform: translateY(-1px);
         box-shadow: 0 12px 22px rgba(47, 42, 37, 0.2);
       }
 
       .hero {
-        padding: 84px 0 0px;
+        padding: 56px 0 0px;
         background: transparent;
       }
       .hero-card {
@@ -140,7 +143,7 @@
         inset: -2px;
         background: linear-gradient(
           135deg,
-          rgba(240, 138, 60, 0.2),
+          rgba(45, 74, 62, 0.1),
           transparent 55%
         );
         pointer-events: none;
@@ -242,8 +245,8 @@
       .accent {
         background: linear-gradient(
           180deg,
-          rgba(253, 230, 212, 0.9),
-          rgba(253, 230, 212, 0.55)
+          rgba(232, 224, 212, 0.9),
+          rgba(232, 224, 212, 0.55)
         );
         border-radius: var(--radius);
         padding: 44px;
@@ -313,7 +316,7 @@
         }
       }
       section[id] {
-        scroll-margin-top: 160px;
+        scroll-margin-top: 128px;
       }
 
       /* ── Hamburger button ── */
@@ -451,7 +454,7 @@
           box-shadow 0.15s ease;
       }
       .mobile-drawer .btn-primary:hover {
-        background: #c96523;
+        background: #152b22;
         transform: translateY(-1px);
         box-shadow: 0 12px 22px rgba(47, 42, 37, 0.2);
         color: #fff;
@@ -461,11 +464,6 @@
           display: flex;
         }
       }
-
-      /* ✅ NEW: hide hero CTA wrapper until content is ready */
-      #hero-cta-wrapper {
-        display: none;
-      }
     </style>
   </head>
 
@@ -474,7 +472,7 @@
       <div class="container nav-inner">
         <a href="#"
           ><img
-            src="/assets/logo.jpg"
+            src="/assets/logo-new.png"
             alt="Sunrise Safeguarding"
             class="brand-logo"
         /></a>
@@ -524,10 +522,8 @@
             <div class="pill-row"></div>
             <h1 id="hero-heading"></h1>
             <p class="lead"></p>
-
-            <!-- ✅ UPDATED: hidden until content is ready -->
-            <div id="hero-cta-wrapper" style="margin-top: 32px; display: none">
-              <a href="#contact" class="btn btn-primary hero-cta-btn"></a>
+            <div style="margin-top: 32px">
+              <a href="#contact" class="btn btn-primary"></a>
             </div>
           </div>
         </div>
@@ -673,26 +669,53 @@
     </main>
 
     <footer>© <span id="year"></span> Sunrise Safeguarding</footer>
-    <script>
-      async function loadHome() {
-        try {
-          const res = await fetch('/.netlify/functions/home');
-          const d = await res.json();
+    <script type="module">
+      import { createClient } from 'https://esm.sh/@sanity/client@6';
+
+      const client = createClient({
+        projectId: '2vw3tpvg',
+        dataset: 'production',
+        apiVersion: '2024-01-01',
+        useCdn: true, // instant updates while working
+      });
+
+      client
+        .fetch(
+          `
+      *[_type=="home"][0]{
+        heading,
+        heroText,
+        heroCta,
+        heroPills[]{label},
+        servicesTitle,
+        services[]{title, description},
+        approachTitle,
+        approachItems[]{title, text},
+        valuesTitle,
+        valuesText,
+        whoTitle,
+        whoText,
+        contactTitle,
+        contactDesc,
+        contactEmail
+      }
+    `,
+        )
+        .then((d) => {
           if (!d) return;
 
-          /* HERO */
+          /* =====================
+         HERO
+      ====================== */
           if (d.heading)
             document.getElementById('hero-heading').textContent = d.heading;
 
           if (d.heroText)
             document.querySelector('.hero .lead').textContent = d.heroText;
 
-          // ✅ UPDATED: only show hero CTA if we have text
-          if (d.heroCta) {
-            const heroBtn = document.querySelector('.hero .hero-cta-btn');
-            heroBtn.textContent = d.heroCta;
-            document.getElementById('hero-cta-wrapper').style.display = 'block';
-          }
+          if (d.heroCta)
+            document.querySelector('.hero .btn-primary').textContent =
+              d.heroCta;
 
           if (Array.isArray(d.heroPills)) {
             const pillRow = document.querySelector('.pill-row');
@@ -705,11 +728,17 @@
             });
           }
 
-          /* SERVICES */
+          /* =====================
+         SERVICES
+      ====================== */
+          /* =====================
+   SERVICES (KEEP ICONS)
+===================== */
           const servicesSection = document.getElementById('services');
 
-          if (d.servicesTitle)
+          if (d.servicesTitle) {
             servicesSection.querySelector('h2').textContent = d.servicesTitle;
+          }
 
           if (Array.isArray(d.services)) {
             const cards = servicesSection.querySelectorAll('.card');
@@ -718,73 +747,86 @@
               const card = cards[index];
               if (!card) return;
 
-              if (service.title)
-                card.querySelector('h3').textContent = service.title;
+              const titleEl = card.querySelector('h3');
+              const descEl = card.querySelector('p');
 
-              if (service.description)
-                card.querySelector('p').textContent = service.description;
+              if (titleEl && service.title) {
+                titleEl.textContent = service.title;
+              }
+
+              if (descEl && service.description) {
+                descEl.textContent = service.description;
+              }
             });
           }
 
-          /* APPROACH */
+          /* =====================
+         APPROACH
+      ====================== */
           const approachSection = document.getElementById('approach');
-
           if (d.approachTitle)
             approachSection.querySelector('h2').textContent = d.approachTitle;
 
           if (Array.isArray(d.approachItems)) {
             const grid = approachSection.querySelector('.grid');
             grid.innerHTML = '';
-
             d.approachItems.forEach((a) => {
               grid.insertAdjacentHTML(
                 'beforeend',
-                `<div class="card">
-             <h3>${a.title}</h3>
-             <p>${a.text}</p>
-           </div>`,
+                `
+            <div class="card">
+              <h3>${a.title}</h3>
+              <p>${a.text}</p>
+            </div>
+          `,
               );
             });
           }
 
-          /* VALUES */
+          /* =====================
+         VALUES
+      ====================== */
           const valuesSection = document.getElementById('values');
           if (d.valuesTitle)
             valuesSection.querySelector('h2').textContent = d.valuesTitle;
+
           if (d.valuesText)
             valuesSection.querySelector('p').textContent = d.valuesText;
 
-          /* WHO */
+          /* =====================
+         WHO WE WORK WITH
+      ====================== */
           const whoSection = document.getElementById('who');
           if (d.whoTitle)
             whoSection.querySelector('h2').textContent = d.whoTitle;
+
           if (d.whoText) whoSection.querySelector('p').textContent = d.whoText;
 
-          /* CONTACT */
-          if (d.contactTitle)
-            document.getElementById('contact-title').textContent =
+          /* =====================
+   CONTACT
+===================== */
+          const contactSection = document.getElementById('contact');
+
+          if (d.contactTitle) {
+            contactSection.querySelector('#contact-title').textContent =
               d.contactTitle;
+          }
 
-          if (d.contactDesc)
-            document.getElementById('contact-desc').textContent = d.contactDesc;
+          if (d.contactDesc) {
+            contactSection.querySelector('#contact-desc').textContent =
+              d.contactDesc;
+          }
 
-          if (d.contactEmail)
-            document.getElementById('contact-email').textContent =
+          if (d.contactEmail) {
+            contactSection.querySelector('#contact-email').textContent =
               d.contactEmail;
-        } catch (err) {
-          console.error('Homepage load error:', err);
-        }
-      }
+          }
+        })
+        .catch(console.error);
 
-      loadHome();
-
-      /* Footer year */
       document.getElementById('year').textContent = new Date().getFullYear();
-
-      /* Mobile menu */
       const hamburger = document.getElementById('hamburger');
       const mobileMenu = document.getElementById('mobileMenu');
-
       function toggleMenu(open) {
         hamburger.classList.toggle('open', open);
         mobileMenu.style.display = open ? 'block' : 'none';
@@ -792,15 +834,12 @@
         hamburger.setAttribute('aria-expanded', open);
         document.body.style.overflow = open ? 'hidden' : '';
       }
-
       hamburger.addEventListener('click', () =>
         toggleMenu(!hamburger.classList.contains('open')),
       );
-
       mobileMenu.addEventListener('click', (e) => {
         if (e.target === mobileMenu) toggleMenu(false);
       });
-
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') toggleMenu(false);
       });
