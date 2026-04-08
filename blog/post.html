@@ -33,7 +33,9 @@
       .post-content ol li::marker {
         color: var(--brand-strong);
       }
-      html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
       :root {
         --brand: #2d4a3e;
         --brand-strong: #1e3a2f;
@@ -58,7 +60,7 @@
         background:
           radial-gradient(
             ellipse 900px 600px at 8% 0%,
-            rgba(45, 74, 62, 0.10) 0%,
+            rgba(45, 74, 62, 0.1) 0%,
             transparent 70%
           ),
           radial-gradient(
@@ -103,7 +105,8 @@
         }
       }
       .brand-logo {
-        max-height: 150px;
+        max-height: 80px;
+        margin: 20px 0px;
         display: block;
       }
       .nav-links {
@@ -173,7 +176,7 @@
         inset: -2px;
         background: linear-gradient(
           135deg,
-          rgba(45, 74, 62, 0.10),
+          rgba(45, 74, 62, 0.1),
           transparent 55%
         );
         pointer-events: none;
