@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -17,7 +17,9 @@
     />
 
     <style>
-      html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
       :root {
         --brand: #2d4a3e;
         --brand-strong: #1e3a2f;
@@ -31,21 +33,34 @@
         --max: 1120px;
       }
 
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
 
       body {
         margin: 0;
         font-family: Inter, system-ui, sans-serif;
         color: var(--ink);
         background:
-          radial-gradient(ellipse 900px 600px at 8% 0%, rgba(45, 74, 62, 0.10) 0%, transparent 70%),
-          radial-gradient(ellipse 600px 400px at 92% 5%, rgba(45, 74, 62, 0.06) 0%, transparent 65%),
+          radial-gradient(
+            ellipse 900px 600px at 8% 0%,
+            rgba(45, 74, 62, 0.1) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 600px 400px at 92% 5%,
+            rgba(45, 74, 62, 0.06) 0%,
+            transparent 65%
+          ),
           var(--paper);
         background-attachment: fixed;
         line-height: 1.65;
       }
 
-      a { color: inherit; text-decoration: none; }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
       .container {
         width: min(var(--max), calc(100% - 32px));
@@ -69,16 +84,24 @@
         gap: 16px;
       }
       @media (min-width: 1201px) {
-        .hamburger { display: none !important; }
+        .hamburger {
+          display: none !important;
+        }
       }
-      .brand-logo { max-height: 150px; display: block; }
+      .brand-logo {
+        max-height: 80px;
+        margin: 20px 0px;
+        display: block;
+      }
       .nav-links {
         display: flex;
         gap: 22px;
         align-items: center;
         font-weight: 600;
       }
-      .nav-links a.active { color: var(--brand-strong); }
+      .nav-links a.active {
+        color: var(--brand-strong);
+      }
 
       /* ── Buttons ── */
       .btn {
@@ -88,7 +111,10 @@
         font-weight: 700;
         border: none;
         cursor: pointer;
-        transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease,
+          background 0.2s ease;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -132,10 +158,16 @@
         content: '';
         position: absolute;
         inset: -2px;
-        background: linear-gradient(135deg, rgba(45, 74, 62, 0.10), transparent 55%);
+        background: linear-gradient(
+          135deg,
+          rgba(45, 74, 62, 0.1),
+          transparent 55%
+        );
         pointer-events: none;
       }
-      .post-hero-card > * { position: relative; }
+      .post-hero-card > * {
+        position: relative;
+      }
 
       .post-category {
         display: inline-block;
@@ -152,7 +184,9 @@
         margin-bottom: 22px;
       }
 
-      h1, h2, h3 {
+      h1,
+      h2,
+      h3 {
         font-family: 'Albert Sans', sans-serif;
         letter-spacing: 0.12em;
         text-transform: uppercase;
@@ -206,11 +240,17 @@
         color: var(--ink);
         font-style: italic;
       }
-      .post-content blockquote p { margin: 0; }
+      .post-content blockquote p {
+        margin: 0;
+      }
 
       /* ── CTA strip ── */
       .post-cta {
-        background: linear-gradient(180deg, rgba(232, 224, 212, 0.9), rgba(232, 224, 212, 0.55));
+        background: linear-gradient(
+          180deg,
+          rgba(232, 224, 212, 0.9),
+          rgba(232, 224, 212, 0.55)
+        );
         border-radius: var(--radius);
         padding: 44px;
         border: 1px solid rgba(0, 0, 0, 0.06);
@@ -240,7 +280,9 @@
         margin-bottom: 40px;
         transition: gap 0.15s ease;
       }
-      .back-link:hover { gap: 12px; }
+      .back-link:hover {
+        gap: 12px;
+      }
       .back-link svg {
         width: 16px;
         height: 16px;
@@ -262,7 +304,9 @@
 
       /* ── Responsive ── */
       @media (max-width: 1200px) {
-        .nav-links { display: none; }
+        .nav-links {
+          display: none;
+        }
         .nav-inner {
           display: grid;
           grid-template-columns: 1fr auto 1fr;
@@ -276,15 +320,30 @@
           grid-column: 3;
           justify-self: end;
         }
-        .post-hero-card { padding: 34px; }
-        .post-hero { padding: 20px 0 0; }
-        .post-content { max-width: 100%; }
-        .post-cta { max-width: 100%; }
+        .post-hero-card {
+          padding: 34px;
+        }
+        .post-hero {
+          padding: 20px 0 0;
+        }
+        .post-content {
+          max-width: 100%;
+        }
+        .post-cta {
+          max-width: 100%;
+        }
       }
       @media (max-width: 600px) {
-        h1 { font-size: 1.4rem; letter-spacing: 0.08em; }
-        .post-hero-card { padding: 24px; }
-        .post-body { padding: 36px 0 60px; }
+        h1 {
+          font-size: 1.4rem;
+          letter-spacing: 0.08em;
+        }
+        .post-hero-card {
+          padding: 24px;
+        }
+        .post-body {
+          padding: 36px 0 60px;
+        }
       }
 
       /* ── Hamburger button ── */
@@ -303,27 +362,49 @@
         transition: background 0.15s ease;
         z-index: 20;
       }
-      .hamburger:hover { background: var(--brand-soft); }
+      .hamburger:hover {
+        background: var(--brand-soft);
+      }
       .hamburger span {
         display: block;
         height: 2px;
         background: var(--ink);
         border-radius: 2px;
-        transition: transform 0.25s ease, opacity 0.2s ease, width 0.2s ease;
+        transition:
+          transform 0.25s ease,
+          opacity 0.2s ease,
+          width 0.2s ease;
         transform-origin: center;
       }
-      .hamburger span:nth-child(1) { width: 22px; }
-      .hamburger span:nth-child(2) { width: 16px; }
-      .hamburger span:nth-child(3) { width: 22px; }
-      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 22px; }
-      .hamburger.open span:nth-child(2) { opacity: 0; }
-      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 22px; }
+      .hamburger span:nth-child(1) {
+        width: 22px;
+      }
+      .hamburger span:nth-child(2) {
+        width: 16px;
+      }
+      .hamburger span:nth-child(3) {
+        width: 22px;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+        width: 22px;
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+        width: 22px;
+      }
 
       /* ── Mobile drawer ── */
       .mobile-menu {
         display: none;
         position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         z-index: 15;
         background: rgba(47, 42, 37, 0.35);
         backdrop-filter: blur(2px);
@@ -331,10 +412,14 @@
         transition: opacity 0.25s ease;
         pointer-events: none;
       }
-      .mobile-menu.open { opacity: 1; pointer-events: all; }
+      .mobile-menu.open {
+        opacity: 1;
+        pointer-events: all;
+      }
       .mobile-drawer {
         position: absolute;
-        top: 0; right: 0;
+        top: 0;
+        right: 0;
         width: min(320px, 85vw);
         height: 100%;
         background: var(--paper);
@@ -344,9 +429,11 @@
         gap: 8px;
         transform: translateX(100%);
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -8px 0 32px rgba(0,0,0,0.12);
+        box-shadow: -8px 0 32px rgba(0, 0, 0, 0.12);
       }
-      .mobile-menu.open .mobile-drawer { transform: translateX(0); }
+      .mobile-menu.open .mobile-drawer {
+        transform: translateX(0);
+      }
       .mobile-drawer a {
         display: block;
         padding: 12px 16px;
@@ -357,13 +444,20 @@
         text-transform: none;
         color: var(--ink);
         border-radius: 10px;
-        transition: background 0.15s ease, color 0.15s ease;
+        transition:
+          background 0.15s ease,
+          color 0.15s ease;
       }
-      .mobile-drawer a:hover { background: var(--brand-soft); color: var(--brand-strong); }
-      .mobile-drawer a.active { color: var(--brand-strong); }
+      .mobile-drawer a:hover {
+        background: var(--brand-soft);
+        color: var(--brand-strong);
+      }
+      .mobile-drawer a.active {
+        color: var(--brand-strong);
+      }
       .mobile-drawer .mobile-divider {
         height: 1px;
-        background: rgba(0,0,0,0.07);
+        background: rgba(0, 0, 0, 0.07);
         margin: 8px 0;
       }
       /* Book a call pill — matches desktop btn-primary */
@@ -381,7 +475,10 @@
         box-shadow: 0 8px 18px rgba(47, 42, 37, 0.18);
         text-align: center;
         justify-content: center;
-        transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+        transition:
+          background 0.2s ease,
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
       }
       .mobile-drawer .btn-primary:hover {
         background: #152b22;
@@ -390,7 +487,9 @@
         color: #fff;
       }
       @media (max-width: 1200px) {
-        .hamburger { display: flex; }
+        .hamburger {
+          display: flex;
+        }
       }
     </style>
   </head>
@@ -398,7 +497,12 @@
   <body>
     <header>
       <div class="container nav-inner">
-        <a href="/"><img src="/assets/logo-new.png" alt="Sunrise Safeguarding" class="brand-logo" /></a>
+        <a href="/"
+          ><img
+            src="/assets/logo-new.png"
+            alt="Sunrise Safeguarding"
+            class="brand-logo"
+        /></a>
         <nav class="nav-links">
           <a href="/#services">Services</a>
           <a href="/#approach">Approach</a>
@@ -410,13 +514,24 @@
           <a href="/faqs.html">FAQs</a>
           <a href="/#contact" class="btn btn-primary">Book a call</a>
         </nav>
-        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
           <span></span><span></span><span></span>
         </button>
       </div>
     </header>
 
-    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation"
+    >
       <div class="mobile-drawer">
         <a href="/about.html">About</a>
         <a href="/blog/" class="active">Blog</a>
@@ -432,8 +547,13 @@
         <div class="container">
           <div class="post-hero-card">
             <span class="post-category">Safeguarding Mindset</span>
-            <h1>Safeguarding Is Not a Policy: Building a Safeguarding Mindset in Africa and Beyond</h1>
-            <p class="post-subtitle">Why many organisations feel "covered" but still miss real risk</p>
+            <h1>
+              Safeguarding Is Not a Policy: Building a Safeguarding Mindset in
+              Africa and Beyond
+            </h1>
+            <p class="post-subtitle">
+              Why many organisations feel "covered" but still miss real risk
+            </p>
           </div>
         </div>
       </section>
@@ -441,68 +561,216 @@
       <section class="post-body">
         <div class="container">
           <a href="/blog/" class="back-link">
-            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6" /></svg>
             Back to Blog
           </a>
 
           <div class="post-content">
-            <p>Safeguarding in Africa is often reduced to policies, training sessions, and compliance checklists. But real safeguarding — for children and vulnerable adults — is about mindset, judgement, and everyday decisions. This article explores why safeguarding is not just a policy, but a way of thinking, and what that means for organisations, NGOs, schools, and communities across Africa and beyond.</p>
+            <p>
+              Safeguarding in Africa is often reduced to policies, training
+              sessions, and compliance checklists. But real safeguarding — for
+              children and vulnerable adults — is about mindset, judgement, and
+              everyday decisions. This article explores why safeguarding is not
+              just a policy, but a way of thinking, and what that means for
+              organisations, NGOs, schools, and communities across Africa and
+              beyond.
+            </p>
 
-            <p>Across Africa — and in many parts of the world — safeguarding is still spoken about as something you <em>have</em>: a policy, a file, a signed document, a training session you once attended. "We're covered," people say. "We've got the policy." "We did the training." And yet harm still happens. Children still fall through gaps. Concerns are still missed, minimised, or misunderstood — not because people don't care, but because safeguarding is being treated as a product rather than a practice.</p>
+            <p>
+              Across Africa — and in many parts of the world — safeguarding is
+              still spoken about as something you <em>have</em>: a policy, a
+              file, a signed document, a training session you once attended.
+              "We're covered," people say. "We've got the policy." "We did the
+              training." And yet harm still happens. Children still fall through
+              gaps. Concerns are still missed, minimised, or misunderstood — not
+              because people don't care, but because safeguarding is being
+              treated as a product rather than a practice.
+            </p>
 
-            <blockquote><p>Safeguarding is not something you own. It is something you do every day, in ordinary moments, through judgement, awareness, and the choices you make when no one is watching.</p></blockquote>
+            <blockquote>
+              <p>
+                Safeguarding is not something you own. It is something you do
+                every day, in ordinary moments, through judgement, awareness,
+                and the choices you make when no one is watching.
+              </p>
+            </blockquote>
 
             <h2>What Is Safeguarding Really?</h2>
 
-            <p>A policy cannot read the room. It cannot notice a child becoming quieter each week. It cannot sense when something is "not quite right." Only people can. Safeguarding lives in the small moments — in how a teacher notices a shift in behaviour, how a coach adjusts their tone, how a nurse trusts her instinct when a story doesn't add up, how a volunteer chooses to speak even when it feels uncomfortable. No document can replace human judgement. Policies guide us, but they cannot think for us. When organisations rely too heavily on paperwork, they risk missing the very thing safeguarding depends on: attentive, thoughtful, ethically awake people.</p>
+            <p>
+              A policy cannot read the room. It cannot notice a child becoming
+              quieter each week. It cannot sense when something is "not quite
+              right." Only people can. Safeguarding lives in the small moments —
+              in how a teacher notices a shift in behaviour, how a coach adjusts
+              their tone, how a nurse trusts her instinct when a story doesn't
+              add up, how a volunteer chooses to speak even when it feels
+              uncomfortable. No document can replace human judgement. Policies
+              guide us, but they cannot think for us. When organisations rely
+              too heavily on paperwork, they risk missing the very thing
+              safeguarding depends on: attentive, thoughtful, ethically awake
+              people.
+            </p>
 
             <h2>Why Safeguarding Policies Are Not Enough</h2>
 
-            <p>In many African contexts, the formal language and frameworks of safeguarding are still relatively new — even though communities have always had ways of caring for and protecting children. Today, many organisations are learning this language quickly, often under pressure from donors, regulators, or international partners. This has led to a strong focus on "getting compliant": write a safeguarding policy, run safeguarding training, get signatures, file the evidence. These steps matter. They are important. But when safeguarding becomes a checklist, it can quietly lose its soul.</p>
+            <p>
+              In many African contexts, the formal language and frameworks of
+              safeguarding are still relatively new — even though communities
+              have always had ways of caring for and protecting children. Today,
+              many organisations are learning this language quickly, often under
+              pressure from donors, regulators, or international partners. This
+              has led to a strong focus on "getting compliant": write a
+              safeguarding policy, run safeguarding training, get signatures,
+              file the evidence. These steps matter. They are important. But
+              when safeguarding becomes a checklist, it can quietly lose its
+              soul.
+            </p>
 
-            <p>This pressure is not imagined. For example, the UK Charity Commission expects charities it regulates — including those funding or partnering with organisations overseas — to ensure that appropriate safeguarding policies and procedures are in place and actively used. Trustees are required to take reasonable steps to protect people who come into contact with their charity's work, including through partner organisations and grant recipients. In practice, this means that many NGOs and community organisations in South Africa and across Africa are required to have a safeguarding policy as a condition of funding or partnership with UK or international organisations.</p>
+            <p>
+              This pressure is not imagined. For example, the UK Charity
+              Commission expects charities it regulates — including those
+              funding or partnering with organisations overseas — to ensure that
+              appropriate safeguarding policies and procedures are in place and
+              actively used. Trustees are required to take reasonable steps to
+              protect people who come into contact with their charity's work,
+              including through partner organisations and grant recipients. In
+              practice, this means that many NGOs and community organisations in
+              South Africa and across Africa are required to have a safeguarding
+              policy as a condition of funding or partnership with UK or
+              international organisations.
+            </p>
 
-            <p>So policies matter. They are an essential pillar of safeguarding. They signal commitment. They set expectations. They create shared language. They help unlock funding and build trust with donors and partners. But a policy, on its own, does not keep anyone safe.</p>
+            <p>
+              So policies matter. They are an essential pillar of safeguarding.
+              They signal commitment. They set expectations. They create shared
+              language. They help unlock funding and build trust with donors and
+              partners. But a policy, on its own, does not keep anyone safe.
+            </p>
 
-            <p>I have seen organisations with beautiful safeguarding policies that still ignore warning signs because someone is "respected," silence concerns to avoid conflict, normalise harm as "culture" or "discipline," or avoid reporting because "it will bring trouble." On paper, they are compliant. In practice, children are still at risk. A safeguarding policy that sits in a file, never referred to in real decisions, never discussed when dilemmas arise, and never trusted by staff or children is functionally useless — and sometimes dangerous, because it creates a false sense of safety.</p>
+            <p>
+              I have seen organisations with beautiful safeguarding policies
+              that still ignore warning signs because someone is "respected,"
+              silence concerns to avoid conflict, normalise harm as "culture" or
+              "discipline," or avoid reporting because "it will bring trouble."
+              On paper, they are compliant. In practice, children are still at
+              risk. A safeguarding policy that sits in a file, never referred to
+              in real decisions, never discussed when dilemmas arise, and never
+              trusted by staff or children is functionally useless — and
+              sometimes dangerous, because it creates a false sense of safety.
+            </p>
 
-            <blockquote><p>Real safeguarding impact is not measured by the existence of documents. It is measured by how people behave, how concerns are recognised and acted on, and how organisations respond when harm is suspected or disclosed.</p></blockquote>
+            <blockquote>
+              <p>
+                Real safeguarding impact is not measured by the existence of
+                documents. It is measured by how people behave, how concerns are
+                recognised and acted on, and how organisations respond when harm
+                is suspected or disclosed.
+              </p>
+            </blockquote>
 
-            <p>Policies are necessary — but they are never sufficient. They only matter if they shape everyday thinking and action on the ground.</p>
+            <p>
+              Policies are necessary — but they are never sufficient. They only
+              matter if they shape everyday thinking and action on the ground.
+            </p>
 
             <h2>Trauma-Informed Safeguarding in Practice</h2>
 
-            <p>Safeguarding is a mindset before it is a system. It is the habit of thinking carefully about power, vulnerability, and impact. It is pausing when something feels wrong even if you cannot yet explain why. Trauma-informed safeguarding recognises that harm is not always loud. Sometimes it is quiet, relational, hidden in patterns of control, shame, fear, or silence. Safeguarding therefore requires curiosity instead of assumption, humility instead of certainty, listening instead of defending, and responsibility instead of reputation management. It is not about being perfect. It is about being awake.</p>
+            <p>
+              Safeguarding is a mindset before it is a system. It is the habit
+              of thinking carefully about power, vulnerability, and impact. It
+              is pausing when something feels wrong even if you cannot yet
+              explain why. Trauma-informed safeguarding recognises that harm is
+              not always loud. Sometimes it is quiet, relational, hidden in
+              patterns of control, shame, fear, or silence. Safeguarding
+              therefore requires curiosity instead of assumption, humility
+              instead of certainty, listening instead of defending, and
+              responsibility instead of reputation management. It is not about
+              being perfect. It is about being awake.
+            </p>
 
             <h2>Safeguarding in Africa: Culture, Context, and Care</h2>
 
-            <p>In African contexts, this matters even more. Many communities are shaped by deep respect for elders, strong hierarchies, and powerful traditions. These often create belonging, care, and protection — but they can also make it harder to question harm when it hides behind authority. Safeguarding cannot simply be imported as a foreign rulebook. It must be lived within local realities: where questioning authority can feel unsafe, where resources are stretched, and where trauma is often layered and intergenerational.</p>
+            <p>
+              In African contexts, this matters even more. Many communities are
+              shaped by deep respect for elders, strong hierarchies, and
+              powerful traditions. These often create belonging, care, and
+              protection — but they can also make it harder to question harm
+              when it hides behind authority. Safeguarding cannot simply be
+              imported as a foreign rulebook. It must be lived within local
+              realities: where questioning authority can feel unsafe, where
+              resources are stretched, and where trauma is often layered and
+              intergenerational.
+            </p>
 
-            <p>Safeguarding then becomes about noticing children who are too afraid to speak, challenging harmful norms with dignity, protecting without shaming, and building trust rather than fear. It is not about blaming culture. It is about letting care lead culture forward.</p>
+            <p>
+              Safeguarding then becomes about noticing children who are too
+              afraid to speak, challenging harmful norms with dignity,
+              protecting without shaming, and building trust rather than fear.
+              It is not about blaming culture. It is about letting care lead
+              culture forward.
+            </p>
 
             <h2>From Compliance to Culture: Making Safeguarding Work</h2>
 
-            <p>The real question is not, "Do you have a safeguarding policy?" It is:</p>
+            <p>
+              The real question is not, "Do you have a safeguarding policy?" It
+              is:
+            </p>
 
-            <ul style="margin: 0 0 1.5em; padding-left: 1.5em; font-size: 1.05rem; line-height: 2; color: var(--ink);">
-              <li>How do people in your organisation make decisions when something feels wrong?</li>
+            <ul
+              style="
+                margin: 0 0 1.5em;
+                padding-left: 1.5em;
+                font-size: 1.05rem;
+                line-height: 2;
+                color: var(--ink);
+              "
+            >
+              <li>
+                How do people in your organisation make decisions when something
+                feels wrong?
+              </li>
               <li>Who is safe to speak to?</li>
               <li>What happens when someone raises a concern?</li>
               <li>Whose comfort matters most when things are difficult?</li>
             </ul>
 
-            <p>Safeguarding is not a document. It is the moral climate of your organisation. And that climate is created every day — by how people think, notice, speak, and act. When safeguarding becomes a way of thinking, not just a policy, it stops being about compliance and starts being about care.</p>
+            <p>
+              Safeguarding is not a document. It is the moral climate of your
+              organisation. And that climate is created every day — by how
+              people think, notice, speak, and act. When safeguarding becomes a
+              way of thinking, not just a policy, it stops being about
+              compliance and starts being about care.
+            </p>
 
             <h2>Safeguarding in Practice: What This Means for Organisations</h2>
 
-            <p>If you are an NGO, school, faith-based organisation, community project, or service working with children or vulnerable adults in Africa, safeguarding must be more than a document. If you receive international funding, your safeguarding policy matters — but so does how it is lived in practice. Trauma-informed safeguarding helps organisations respond to harm with care, accountability, and learning.</p>
+            <p>
+              If you are an NGO, school, faith-based organisation, community
+              project, or service working with children or vulnerable adults in
+              Africa, safeguarding must be more than a document. If you receive
+              international funding, your safeguarding policy matters — but so
+              does how it is lived in practice. Trauma-informed safeguarding
+              helps organisations respond to harm with care, accountability, and
+              learning.
+            </p>
 
-            <p>Safeguarding is not about perfection. It is about responsibility. It is about choosing, again and again, to notice, to question, and to act in ways that protect dignity and life.</p>
+            <p>
+              Safeguarding is not about perfection. It is about responsibility.
+              It is about choosing, again and again, to notice, to question, and
+              to act in ways that protect dignity and life.
+            </p>
 
             <div class="post-cta">
               <h2>Ready to build a safeguarding culture?</h2>
-              <p>We work with NGOs, schools, faith-based organisations, and community projects across Africa to move safeguarding from policy to practice.</p>
-              <a href="/#contact" class="btn btn-primary">Book a consultation</a>
+              <p>
+                We work with NGOs, schools, faith-based organisations, and
+                community projects across Africa to move safeguarding from
+                policy to practice.
+              </p>
+              <a href="/#contact" class="btn btn-primary"
+                >Book a consultation</a
+              >
             </div>
           </div>
         </div>
@@ -521,9 +789,15 @@
         hamburger.setAttribute('aria-expanded', open);
         document.body.style.overflow = open ? 'hidden' : '';
       }
-      hamburger.addEventListener('click', () => toggleMenu(!hamburger.classList.contains('open')));
-      mobileMenu.addEventListener('click', (e) => { if (e.target === mobileMenu) toggleMenu(false); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleMenu(false); });
+      hamburger.addEventListener('click', () =>
+        toggleMenu(!hamburger.classList.contains('open')),
+      );
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) toggleMenu(false);
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') toggleMenu(false);
+      });
     </script>
   </body>
 </html>
