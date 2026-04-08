@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Blog — Sunrise Safeguarding</title>
+    <title>Safeguarding Is Not a Policy — Sunrise Safeguarding</title>
     <meta
       name="description"
-      content="Insights, guidance and practical thinking on safeguarding in Africa and beyond — from Sunrise Safeguarding."
+      content="Why many organisations feel 'covered' but still miss real risk. Safeguarding is not a policy — it is a mindset, a practice, and a way of thinking."
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,6 +17,22 @@
     />
 
     <style>
+      .post-content ul,
+      .post-content ol {
+        margin: 2em 0 2em 1.8em;
+        padding-left: 1.2em;
+      }
+
+      .post-content li {
+        margin-bottom: 1em;
+        line-height: 1.8;
+      }
+
+      /* Optional: brand-coloured bullets */
+      .post-content ul li::marker,
+      .post-content ol li::marker {
+        color: var(--brand-strong);
+      }
       html { scroll-behavior: smooth; }
       :root {
         --brand: #2d4a3e;
@@ -126,13 +142,23 @@
         transform: translateY(-1px);
         box-shadow: 0 12px 22px rgba(47, 42, 37, 0.2);
       }
+      .btn-ghost {
+        background: transparent;
+        color: var(--brand-strong);
+        border: 2px solid var(--brand-strong);
+        padding: 10px 20px;
+      }
+      .btn-ghost:hover {
+        background: var(--brand-soft);
+        transform: translateY(-1px);
+      }
 
-      /* ── Page hero ── */
-      .page-hero {
-        padding: 72px 0 0;
+      /* ── Article hero ── */
+      .post-hero {
+        padding: 64px 0 0;
         background: transparent;
       }
-      .page-hero-card {
+      .post-hero-card {
         background: var(--white);
         border-radius: var(--radius);
         box-shadow: var(--shadow);
@@ -141,7 +167,7 @@
         position: relative;
         overflow: hidden;
       }
-      .page-hero-card::before {
+      .post-hero-card::before {
         content: '';
         position: absolute;
         inset: -2px;
@@ -152,65 +178,15 @@
         );
         pointer-events: none;
       }
-      .page-hero-card > * {
+      .post-hero-card > * {
         position: relative;
       }
 
-      h1,
-      h2,
-      h3 {
-        font-family: 'Albert Sans', sans-serif;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        margin-top: 0;
-      }
-      h1 {
-        font-size: clamp(1.75rem, 5vw, 3.2rem);
-        margin-bottom: 12px;
-        letter-spacing: 0.12em;
-        line-height: 1.2;
-      }
-
-      .lead {
-        font-size: 1.1rem;
-        max-width: 68ch;
-        margin-top: 18px;
-        color: var(--ink-soft);
-        margin-bottom: 0;
-      }
-
-      /* ── Blog grid ── */
-      .blog-section {
-        padding: 64px 0 80px;
-      }
-      .blog-grid {
-        display: grid;
-        gap: 26px;
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      /* ── Post card ── */
-      .post-card {
-        background: var(--white);
-        border-radius: var(--radius);
-        padding: 36px 32px;
-        box-shadow: var(--shadow);
-        border: 1px solid rgba(0, 0, 0, 0.06);
-        display: flex;
-        flex-direction: column;
-        transition:
-          transform 0.18s ease,
-          box-shadow 0.18s ease;
-      }
-      .post-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.11);
-      }
-      .post-card-category {
+      .post-category {
         display: inline-block;
-        padding: 5px 12px;
+        padding: 7px 14px;
         border-radius: 999px;
-        font-size: 0.68rem;
+        font-size: 0.72rem;
         font-weight: 800;
         background: var(--brand-soft);
         color: var(--brand-strong);
@@ -218,41 +194,113 @@
         text-transform: uppercase;
         font-family: 'Albert Sans', sans-serif;
         border: 1px solid rgba(0, 0, 0, 0.05);
-        margin-bottom: 18px;
-        align-self: flex-start;
+        margin-bottom: 22px;
       }
-      .post-card h3 {
-        font-size: 1rem;
-        margin-bottom: 12px;
-        line-height: 1.4;
-        letter-spacing: 0.1em;
+
+      h1,
+      h2,
+      h3 {
+        font-family: 'Albert Sans', sans-serif;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-top: 0;
       }
-      .post-card p {
-        margin: 0 0 24px;
+      h1 {
+        font-size: clamp(1.6rem, 4vw, 2.8rem);
+        margin-bottom: 16px;
+        line-height: 1.2;
+      }
+      h2 {
+        font-size: 1.25rem;
+        margin-bottom: 14px;
+        margin-top: 48px;
+        letter-spacing: 0.14em;
+      }
+
+      .post-subtitle {
+        font-size: 1.15rem;
         color: var(--ink-soft);
-        font-size: 0.95rem;
-        flex-grow: 1;
+        font-style: italic;
+        margin-bottom: 0;
+        max-width: 72ch;
       }
-      .post-card-link {
+
+      /* ── Article body ── */
+      .post-body {
+        padding: 56px 0 80px;
+      }
+      .post-content {
+        max-width: 72ch;
+        margin: 0 auto;
+      }
+      .post-content p {
+        margin: 0 0 1.5em;
+        font-size: 1.05rem;
+        color: var(--ink);
+        line-height: 1.75;
+      }
+      .post-content h2 {
+        color: var(--ink);
+        margin-top: 2.4em;
+      }
+      .post-content blockquote {
+        margin: 2em 0;
+        padding: 20px 28px;
+        background: var(--brand-soft);
+        border-left: 4px solid var(--brand-strong);
+        border-radius: 0 var(--radius) var(--radius) 0;
+        font-size: 1.08rem;
+        color: var(--ink);
+        font-style: italic;
+      }
+      .post-content blockquote p {
+        margin: 0;
+      }
+
+      /* ── CTA strip ── */
+      .post-cta {
+        background: linear-gradient(
+          180deg,
+          rgba(232, 224, 212, 0.9),
+          rgba(232, 224, 212, 0.55)
+        );
+        border-radius: var(--radius);
+        padding: 44px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        text-align: center;
+        max-width: 72ch;
+        margin: 48px auto 0;
+      }
+      .post-cta h2 {
+        margin-top: 0;
+        margin-bottom: 12px;
+        font-size: 1.15rem;
+      }
+      .post-cta p {
+        color: var(--ink-soft);
+        margin-bottom: 24px;
+        font-size: 1rem;
+      }
+
+      /* ── Back link ── */
+      .back-link {
         display: inline-flex;
         align-items: center;
-        gap: 6px;
+        gap: 8px;
         color: var(--brand-strong);
-        font-weight: 700;
-        font-size: 0.9rem;
-        font-family: 'Albert Sans', sans-serif;
-        letter-spacing: 0.06em;
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 40px;
         transition: gap 0.15s ease;
-        align-self: flex-start;
       }
-      .post-card-link:hover {
-        gap: 10px;
+      .back-link:hover {
+        gap: 12px;
       }
-      .post-card-link svg {
-        width: 14px;
-        height: 14px;
+      .back-link svg {
+        width: 16px;
+        height: 16px;
         stroke: currentColor;
-        stroke-width: 2.5;
+        stroke-width: 2;
         fill: none;
         stroke-linecap: round;
         stroke-linejoin: round;
@@ -285,29 +333,29 @@
           grid-column: 3;
           justify-self: end;
         }
-        .blog-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .page-hero-card {
+        .post-hero-card {
           padding: 34px;
         }
-        .page-hero {
+        .post-hero {
           padding: 20px 0 0;
+        }
+        .post-content {
+          max-width: 100%;
+        }
+        .post-cta {
+          max-width: 100%;
         }
       }
       @media (max-width: 600px) {
         h1 {
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           letter-spacing: 0.08em;
         }
-        .blog-grid {
-          grid-template-columns: 1fr;
-        }
-        .page-hero-card {
+        .post-hero-card {
           padding: 24px;
         }
-        .blog-section {
-          padding: 40px 0 60px;
+        .post-body {
+          padding: 36px 0 60px;
         }
       }
 
@@ -508,124 +556,40 @@
     </div>
 
     <main>
-      <section class="page-hero">
+      <section class="post-hero">
         <div class="container">
-          <div class="page-hero-card">
-            <h1>Blog</h1>
-            <p class="lead">
-              Insights, guidance and practical thinking on safeguarding in
-              Africa and beyond.
+          <div class="post-hero-card">
+            <span class="post-category">Safeguarding Mindset</span>
+            <h1>
+              Safeguarding Is Not a Policy: Building a Safeguarding Mindset in
+              Africa and Beyond
+            </h1>
+            <p class="post-subtitle">
+              Why many organisations feel "covered" but still miss real risk
             </p>
           </div>
         </div>
       </section>
 
-      <section class="blog-section">
+      <section class="post-body">
         <div class="container">
-          <div class="blog-grid">
-            <article class="post-card">
-              <span class="post-card-category">South African Context</span>
-              <h3>
-                What Safeguarding Really Means in the South African Context
-              </h3>
-              <p>
-                Why importing UK and European safeguarding models without
-                adaptation fails — and how to build safety in real conditions,
-                with real people, in real communities.
-              </p>
-              <a
-                href="/blog/safeguarding-south-africa.html"
-                class="post-card-link"
-              >
-                Read article
-                <svg viewBox="0 0 24 24">
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
-              </a>
-            </article>
-            <article class="post-card">
-              <span class="post-card-category">Safeguarding Mindset</span>
-              <h3>
-                Safeguarding Is Not a Policy: Building a Safeguarding Mindset in
-                Africa and Beyond
-              </h3>
-              <p>
-                Why many organisations feel "covered" but still miss real risk —
-                and what it means to move from compliance to genuine
-                safeguarding culture.
-              </p>
-              <a href="/blog/safeguarding-mindset.html" class="post-card-link">
-                Read article
-                <svg viewBox="0 0 24 24">
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
-              </a>
-            </article>
-          </div>
+          <a href="/blog/" class="back-link">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6" /></svg>
+            Back to Blog
+          </a>
+
+          <div class="post-content"></div>
         </div>
       </section>
     </main>
 
     <footer>© <span id="year"></span> Sunrise Safeguarding</footer>
-    <script type="module">
-      import { createClient } from 'https://esm.sh/@sanity/client@6';
-
-      const client = createClient({
-        projectId: '2vw3tpvg',
-        dataset: 'production',
-        apiVersion: '2024-01-01',
-        useCdn: true,
-      });
-
-      client
-        .fetch(
-          `
-      *[_type=="post"] | order(_createdAt desc) {
-        title,
-        slug,
-        category,
-        excerpt
-      }
-    `,
-        )
-        .then((posts) => {
-          const grid = document.querySelector('.blog-grid');
-          grid.innerHTML = '';
-
-          posts.forEach((post) => {
-            grid.insertAdjacentHTML(
-              'beforeend',
-              `
-          <article class="post-card">
-            ${
-              post.category
-                ? `
-              <span class="post-card-category">
-                ${post.category}
-              </span>
-            `
-                : ''
-            }
-
-            <h3>${post.title}</h3>
-
-            <p>${post.excerpt || ''}</p>
-
-            <a href="/blog/post.html?slug=${post.slug.current}" class="post-card-link">
-              Read article
-              <svg viewBox="0 0 24 24">
-                <polyline points="9 18 15 12 9 6"/>
-              </svg>
-            </a>
-          </article>
-        `,
-            );
-          });
-        })
-        .catch(console.error);
-
+    <script>
       document.getElementById('year').textContent = new Date().getFullYear();
 
+      // -------------------------
+      // MOBILE MENU
+      // -------------------------
       const hamburger = document.getElementById('hamburger');
       const mobileMenu = document.getElementById('mobileMenu');
 
@@ -648,6 +612,154 @@
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') toggleMenu(false);
       });
+
+      // -------------------------
+      // SANITY CONFIG
+      // -------------------------
+      const projectId = '2vw3tpvg';
+      const dataset = 'production';
+      const apiVersion = '2024-01-01';
+
+      const baseUrl = `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}`;
+
+      // -------------------------
+      // GET SLUG FROM URL
+      // -------------------------
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('slug');
+
+      if (!slug) {
+        document.querySelector('.post-content').innerHTML =
+          '<p>Post not found.</p>';
+        throw new Error('No slug provided');
+      }
+
+      // -------------------------
+      // FETCH POST
+      // -------------------------
+      const query = encodeURIComponent(`
+    *[_type == "post" && slug.current == "${slug}"][0]{
+      title,
+      excerpt,
+      category,
+      body
+    }
+  `);
+
+      fetch(`${baseUrl}?query=${query}`)
+        .then((res) => res.json())
+        .then(({ result }) => {
+          if (!result) {
+            document.querySelector('.post-content').innerHTML =
+              '<p>Post not found.</p>';
+            return;
+          }
+
+          document.querySelector('.post-category').textContent =
+            result.category || 'Blog';
+
+          document.querySelector('h1').textContent = result.title;
+          document.querySelector('.post-subtitle').textContent =
+            result.excerpt || '';
+
+          document.title = `${result.title} — Sunrise Safeguarding`;
+
+          const container = document.querySelector('.post-content');
+          container.innerHTML = '';
+
+          let listBuffer = [];
+          let listType = null;
+
+          function flushList() {
+            if (!listBuffer.length) return;
+
+            const tag = listType === 'number' ? 'ol' : 'ul';
+
+            container.insertAdjacentHTML(
+              'beforeend',
+              `<${tag}>${listBuffer.join('')}</${tag}>`,
+            );
+
+            listBuffer = [];
+            listType = null;
+          }
+
+          result.body.forEach((block) => {
+            if (block.listItem) {
+              if (!listType) listType = block.listItem;
+
+              listBuffer.push(`<li>${renderChildren(block.children)}</li>`);
+
+              return;
+            }
+
+            // If we hit non-list content, flush any open list
+            flushList();
+
+            const content = renderChildren(block.children);
+
+            switch (block.style) {
+              case 'h2':
+                container.insertAdjacentHTML(
+                  'beforeend',
+                  `<h2>${content}</h2>`,
+                );
+                break;
+
+              case 'blockquote':
+                container.insertAdjacentHTML(
+                  'beforeend',
+                  `<blockquote><p>${content}</p></blockquote>`,
+                );
+                break;
+
+              default:
+                container.insertAdjacentHTML('beforeend', `<p>${content}</p>`);
+            }
+          });
+
+          // Flush remaining list at end
+          flushList();
+
+          container.insertAdjacentHTML(
+            'beforeend',
+            `
+      <div class="post-cta">
+        <h2>Ready to build a safeguarding culture?</h2>
+        <p>We work with NGOs, schools, faith-based organisations, and community projects across Africa to move safeguarding from policy to practice.</p>
+        <a href="/#contact" class="btn btn-primary">Book a consultation</a>
+      </div>
+      `,
+          );
+        })
+        .catch(() => {
+          document.querySelector('.post-content').innerHTML =
+            '<p>Error loading post.</p>';
+        });
+      // -------------------------
+      // RENDER CHILDREN (Bold / Italic / Links)
+      // -------------------------
+      function renderChildren(children) {
+        return children
+          .map((child) => {
+            let text = child.text.replace(/\n/g, '<br>');
+
+            if (!child.marks) return text;
+
+            child.marks.forEach((mark) => {
+              if (mark === 'strong') {
+                text = `<strong>${text}</strong>`;
+              }
+
+              if (mark === 'em') {
+                text = `<em>${text}</em>`;
+              }
+            });
+
+            return text;
+          })
+          .join('');
+      }
     </script>
   </body>
 </html>
