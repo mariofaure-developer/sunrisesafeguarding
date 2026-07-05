@@ -396,11 +396,6 @@
         section + section {
           padding-top: 0px;
         }
-
-        .loader-card {
-          width: calc(100% - 32px);
-          padding: 36px 28px;
-        }
       }
 
       section[id] {
@@ -621,11 +616,8 @@
       </div>
     </div>
 
-    <div id="pageLoader" class="page-loader" aria-live="polite">
-      <div class="loader-card">
-        <div class="spinner" aria-hidden="true"></div>
-        <span>Loading page...</span>
-      </div>
+    <div id="pageLoader" class="page-loader" aria-label="Loading">
+      <div class="spinner" aria-hidden="true"></div>
     </div>
 
     <main id="siteContent" class="site-content is-loading">
